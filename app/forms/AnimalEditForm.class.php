@@ -3,8 +3,7 @@
 namespace app\forms;
 
 class AnimalEditForm {
-	public $id;
-	public $name;
-	public $surname;
-	public $birthdate;
+	public $animal_id;
+	public $animal_name;
+	public $join_date;
 }

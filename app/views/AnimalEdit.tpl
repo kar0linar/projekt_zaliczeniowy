@@ -5,22 +5,22 @@
 <div class="bottom-margin">
 <form action="{$conf->action_root}animalSave" method="post" class="pure-form pure-form-aligned">
 	<fieldset>
-		<legend>Dane osoby</legend>
+		<legend>animal data</legend>
 		<div class="pure-control-group">
-            <label for="name">imię</label>
-            <input id="name" type="text" placeholder="imię" name="name" value="{$form->name}">
+            <label for="name">animal id</label>
+            <input id="name" type="text" placeholder="id" name="id" value="{$form->animal_id}">
         </div>
 		<div class="pure-control-group">
-            <label for="surname">nazwisko</label>
-            <input id="surname" type="text" placeholder="nazwisko" name="surname" value="{$form->surname}">
+            <label for="name">name</label>
+            <input id="name" type="text" placeholder="name" name="name" value="{$form->animal_name}">
         </div>
 		<div class="pure-control-group">
-            <label for="birthdate">data ur.</label>
-            <input id="birthdate" type="text" placeholder="data ur." name="birthdate" value="{$form->birthdate}">
+            <label for="join date">data ur.</label>
+            <input id="join date" type="text" placeholder="join date" name="join date" value="{$form->join_date}">
         </div>
 		<div class="pure-controls">
-			<input type="submit" class="pure-button pure-button-primary" value="Zapisz"/>
-			<a class="pure-button button-secondary" href="{$conf->action_root}animalList">Powrót</a>
+			<input type="submit" class="pure-button pure-button-primary" value="save"/>
+			<a class="pure-button button-secondary" href="{$conf->action_root}animalList">return</a>
 		</div>
 	</fieldset>
     <input type="hidden" name="id" value="{$form->id}">

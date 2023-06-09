@@ -93,22 +93,34 @@
 						<h4 style="font-weight:100;">enter the user and password to log in</h4>
 					</header>
 					
-					<div class="container">
-						<form method="post" action="#" class="cta">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-8 col-12-xsmall">
-									<input type="text" name="login" id="id_login" placeholder="login" />
-								</div>
-								<div class="col-8 col-12-xsmall">
-									<input type="password" name="pass" id="id_pass" placeholder="password" />
-								</div>
-								<div class="col-12">
-									<button type="submit" value="log in" class="button primary">
-										<span>Log in</span>
-									</button>
-								</div>  
-								
-							</div>
-						</form>
+		<div class="container">
+			<form method="post" action="#" class="cta">
+				<div class="row gtr-uniform gtr-50">
+					<div class="col-8 col-12-xsmall">
+						<input type="text" name="login" id="id_login" placeholder="login" />
 					</div>
-				</section>
+					<div class="col-8 col-12-xsmall">
+						<input type="password" name="pass" id="id_pass" placeholder="password" />
+					</div>
+					<div class="col-12">
+						<button type="submit" value="log in" class="button primary">
+							<span>Log in</span>
+						</button>
+					</div>  
+					
+				</div>
+			</form>
+		</div>
+	</section>
+	{if $msgs->isMessage()}
+		<div class="messages bottom-margin">
+			<ul>
+			{foreach $msgs->getMessages() as $msg}
+			{strip}
+				<li class="msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">{$msg->text}</li>
+			
+				{/strip}
+			{/foreach}
+			</ul>
+		</div>
+		{/if}

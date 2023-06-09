@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-08 10:54:49
+/* Smarty version 4.3.0, created on 2023-06-08 11:28:45
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\LoginView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_648197595fcbf0_37386213',
+  'unifunc' => 'content_64819f4da65604_94150774',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '453663c99df94a240735bc08f888bd6ca6213453' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\LoginView.tpl',
-      1 => 1686214394,
+      1 => 1686216523,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_648197595fcbf0_37386213 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64819f4da65604_94150774 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <head>
 	<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
@@ -98,23 +98,41 @@ login" method="post">
 						<h4 style="font-weight:100;">enter the user and password to log in</h4>
 					</header>
 					
-					<div class="container">
-						<form method="post" action="#" class="cta">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-8 col-12-xsmall">
-									<input type="text" name="login" id="id_login" placeholder="login" />
-								</div>
-								<div class="col-8 col-12-xsmall">
-									<input type="password" name="pass" id="id_pass" placeholder="password" />
-								</div>
-								<div class="col-12">
-									<button type="submit" value="log in" class="button primary">
-										<span>Log in</span>
-									</button>
-								</div>  
-								
-							</div>
-						</form>
+		<div class="container">
+			<form method="post" action="#" class="cta">
+				<div class="row gtr-uniform gtr-50">
+					<div class="col-8 col-12-xsmall">
+						<input type="text" name="login" id="id_login" placeholder="login" />
 					</div>
-				</section><?php }
+					<div class="col-8 col-12-xsmall">
+						<input type="password" name="pass" id="id_pass" placeholder="password" />
+					</div>
+					<div class="col-12">
+						<button type="submit" value="log in" class="button primary">
+							<span>Log in</span>
+						</button>
+					</div>  
+					
+				</div>
+			</form>
+		</div>
+	</section>
+	<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isMessage()) {?>
+		<div class="messages bottom-margin">
+			<ul>
+			<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');
+$_smarty_tpl->tpl_vars['msg']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
+$_smarty_tpl->tpl_vars['msg']->do_else = false;
+?>
+			<li class="msg <?php if ($_smarty_tpl->tpl_vars['msg']->value->isError()) {?>error<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isWarning()) {?>warning<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isInfo()) {?>info<?php }?>"><?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+</li>
+			<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+			</ul>
+		</div>
+		<?php }
+}
 }

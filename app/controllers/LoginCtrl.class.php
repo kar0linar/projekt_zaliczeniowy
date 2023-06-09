@@ -69,7 +69,7 @@ class LoginCtrl {
         // 1. zakończenie sesji
         session_destroy();
         // 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
-        App::getRouter()->redirectTo('AnimalList');
+        App::getRouter()->redirectTo('LoginCtrl');
         Utils::addErrorMessage('Poprawnie wylogowano z systemu');
 
     }

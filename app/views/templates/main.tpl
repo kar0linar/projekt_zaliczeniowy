@@ -12,11 +12,11 @@
 <body style="margin: 20px;">
 
 <div class="pure-menu pure-menu-horizontal bottom-margin">
-	<a href="{$conf->action_root}animalList" class="pure-menu-heading pure-menu-link">Lista</a>
+	<a href="{$conf->action_root}animalList" class="pure-menu-heading pure-menu-link">list</a>
 {if count($conf->roles)>0}
-	<a href="{$conf->action_root}logout" class="pure-menu-heading pure-menu-link">Wyloguj</a>
+	<a href="{$conf->action_root}logout" class="pure-menu-heading pure-menu-link">log in</a>
 {else}	
-	<a href="{$conf->action_root}loginShow" class="pure-menu-heading pure-menu-link">Zaloguj</a>
+	<a href="{$conf->action_root}loginShow" class="pure-menu-heading pure-menu-link">log out</a>
 {/if}
 </div>
 
