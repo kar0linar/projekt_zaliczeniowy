@@ -19,108 +19,63 @@
 </form>	
 {/block} *}
 
+
+
+<!DOCTYPE HTML>
 <head>
 	<form action="{$conf->action_root}login" method="post">
 	<title>login</title>
 	<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
-	<style>
-		body {
-			background-color: #f1f1f1;
+		<style>
+		.login-wrapper {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100vh;
 		}
-		#wrapper {
-			margin: 0 auto;
-			padding: 3em;
-			max-width: 800px;
-		}
-		h1 {
-			font-size: 2em;
-			margin-bottom: 0.5em;
-		}
+	  
 		.container {
-			background-color: #fff;
-			padding: 2em;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		  width: 400px;
+		  text-align: center;
 		}
-		.container input[type="text"],
-		.container input[type="password"] {
-			width: 100%;
-			padding: 0.5em;
-			margin-bottom: 1em;
-			border: 1px solid #ccc;
-			border-radius: 3px;
-		}
-		.container button {
-		
-			background-color: #4CAF50;
-			border: none;
-			color: white;
-			cursor: pointer;
-			border-radius: 3px;
-			font-size: 1em;
-			width: 100%;
-		}
-		.container button:hover {
-			background-color: #45a049;
-		}
-		.container p {
-			margin-bottom: 1em;
-		}
-		.container .col-8 {
-			width: 100%;
-		}
-		.container button span {
-			display: inline-block;
-			vertical-align: middle;
-		}
-		.cta{
-			margin:0;
-		}
-	</style>
+	  </style>
 </head>
 <body>
-	<!-- Wrapper -->
-	<div id="wrapper">
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-				<!-- Content -->
-				<section>
-					<header class="main" style="display:flex;flex-direction:column;align-items:center">
-						<h1>Login</h1>
-						<h4 style="font-weight:100;">enter the user and password to log in</h4>
-					</header>
-					
-		<div class="container">
-			<form method="post" action="#" class="cta">
-				<div class="row gtr-uniform gtr-50">
-					<div class="col-8 col-12-xsmall">
-						<input type="text" name="login" id="id_login" placeholder="login" />
-					</div>
-					<div class="col-8 col-12-xsmall">
-						<input type="password" name="pass" id="id_pass" placeholder="password" />
-					</div>
-					<div class="col-12">
-						<button type="submit" value="log in" class="button primary">
-							<span>Log in</span>
-						</button>
-					</div>  
-					
-				</div>
-			</form>
-		</div>
-	</section>
+<div class="login-wrapper">
+<div class="container">
+  <header>
+	<h2>Witamy w bazie zwierząt zoo</h2>
+	<p>Zaloguj się do systemu, aby móc skorzystać ze strony</p>
+  </header>
+  <form action="{$conf->action_url}login" method="post" class="login-form">
+	<div class="row gtr-uniform gtr-50">
+	  <div class="col-12">
+		<input type="text" name="login" id="id_login" placeholder="Login" value="{$form->login}">
+	  </div>
+	  <div class="col-12">
+		<input type="password" name="pass" id="id_pass" placeholder="Hasło">
+	  </div>
+	  <div class="col-12">
+		<input type="submit" value="Zaloguj" class="button primary">
+	  </div>
+	  {block name=messages}
+
 	{if $msgs->isMessage()}
-		<div class="messages bottom-margin">
-			<ul>
-			{foreach $msgs->getMessages() as $msg}
-			{strip}
-				<li class="msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">{$msg->text}</li>
-			
-				{/strip}
-			{/foreach}
-			</ul>
-		</div>
-		{/if}
+	<div class="messages bottom-margin">
+		<ul>
+		{foreach $msgs->getMessages() as $msg}
+		{strip}
+			<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">{$msg->text}</span>
+		{/strip}
+		{/foreach}
+		</ul>
+	</div>
+	{/if}
+	
+	{/block}
+	</div>
+  </form>
+</div>
+</div>
