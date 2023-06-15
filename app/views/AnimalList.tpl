@@ -60,7 +60,7 @@
 
 <html>
 	<head>
-		<title>Solid State by HTML5 UP</title>
+		<title>lista zwierzaków</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -89,35 +89,63 @@
 						</div>
 					</section>
 					
+					<div class="bottom-margin">
+					<form class="" action="{$conf->action_url}animalList">
+					<legend style="margin-left: 260px; line-height: 3;">wyszukiwarka zwierzątek:</legend>
+					<fieldset>
+					<input type="text" placeholder="podaj imie" name="sf_animal_name" style="max-width: 300px;margin-left:260px;" value="{$searchForm->animal_name}" /><br />
+					<button type="submit" class="button primary small" style="margin-left:260px;">Filtruj</button>
+					</fieldset>
+					
+					<div class="bottom-margin" style="margin-top: 20px;">
+					<button type="submit" class="button small" style="margin-left:260px;" href="{$conf->action_root}animalNew">+ dodaj zwierzątko</button>
+					</div>
+					</form>
+					</div>
 
-					<h4>Alternate</h4>
+
+
+
+					<div style="text-align: center;">
+					<h2>Lista zwierzątek</h2>
 					<div class="table-wrapper">
-					<table id="tab_animal" class="pure-table pure-table-bordered">
-					<thead>
-						<tr>
-							<th>animal id</th>
-							<th>name</th>
-							<th>join date</th>
-							<th>options</th>
-						</tr>
-					</thead>
-					<tbody>
-					{foreach $animal as $a}
-					{strip}
-						<tr>
-							<td>{$a["animal_id"]}</td>
-							<td>{$a["animal_name"]}</td>
-							<td>{$a["join_date"]}</td>
-							<td>
-								<a class="button-small pure-button button-secondary" href="{$conf->action_url}animalEdit/{$a['animal_id']}">edit</a>
-								&nbsp;
-								<a class="button-small pure-button button-warning" href="{$conf->action_url}animalDelete/{$a['animal_id']}">delete</a>
-							</td>
-						</tr>
-					{/strip}
-					{/foreach}
-					</tbody>
-					</table>
+						<table id="tab_animal" class="alt" style="max-width: 500px; margin: auto;">
+							<thead>
+								<tr>
+									<th style="text-align: center;">numer</th>
+									<th style="text-align: center;">imie</th>
+									<th style="text-align: center;">data dołączenia</th>
+									<th style="text-align: center;">opcje</th>
+								</tr>
+							</thead>
+							<tbody>
+								{foreach $animal as $a}
+								{strip}
+								<tr>
+									<td>{$a["animal_id"]}</td>
+									<td>{$a["animal_name"]}</td>
+									<td>{$a["join_date"]}</td>
+									<td>
+										<div style="display: flex; justify-content: center;">
+											<a class="button primary small" href="{$conf->action_url}animalEdit/{$a['animal_id']}">edytuj</a>
+											&nbsp;
+											<a class="button small" href="{$conf->action_url}animalDelete/{$a['animal_id']}">usuń</a>
+										</div>
+									</td>
+								</tr>
+								{/strip}
+								{/foreach}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+
+
+
+
+
+					</div>
 					</div>
 					
 

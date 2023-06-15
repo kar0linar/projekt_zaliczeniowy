@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-13 23:04:27
+/* Smarty version 4.3.0, created on 2023-06-14 16:42:11
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\LoginView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6488d9db954918_19105050',
+  'unifunc' => 'content_6489d1c3922735_57466481',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '453663c99df94a240735bc08f888bd6ca6213453' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\LoginView.tpl',
-      1 => 1686690265,
+      1 => 1686753728,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6488d9db954918_19105050 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6489d1c3922735_57466481 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -71,7 +71,7 @@ login" method="post" class="login-form">
 		<input type="submit" value="Zaloguj" class="button primary">
 	  </div>
 	  <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17222738876488d9db92e567_91095256', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14948913826489d1c3876532_47835621', 'messages');
 ?>
 
 	</div>
@@ -80,12 +80,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17222738876488d9db
 </div>
 <?php }
 /* {block 'messages'} */
-class Block_17222738876488d9db92e567_91095256 extends Smarty_Internal_Block
+class Block_14948913826489d1c3876532_47835621 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_17222738876488d9db92e567_91095256',
+    0 => 'Block_14948913826489d1c3876532_47835621',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

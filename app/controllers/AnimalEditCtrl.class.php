@@ -91,7 +91,7 @@ class AnimalEditCtrl {
 
     public function action_animalDelete() {
         // 1. walidacja id osoby do usuniecia
-        if ($this->valanimal_idateEdit()) {
+        if ($this->validateEdit()) {
 
             try {
                 // 2. usunięcie rekordu

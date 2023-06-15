@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-13 22:55:00
+/* Smarty version 4.3.0, created on 2023-06-15 21:51:30
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6488d7a433ec48_01983204',
+  'unifunc' => 'content_648b6bc2845274_42709874',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd4d1742679900583f46a015a73f960500d973a6e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalList.tpl',
-      1 => 1686689697,
+      1 => 1686858425,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6488d7a433ec48_01983204 (Smarty_Internal_Template $_smarty_tpl) {
+function content_648b6bc2845274_42709874 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
@@ -31,7 +31,7 @@ function content_6488d7a433ec48_01983204 (Smarty_Internal_Template $_smarty_tpl)
 
 <html>
 	<head>
-		<title>Solid State by HTML5 UP</title>
+		<title>lista zwierzaków</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -61,38 +61,67 @@ loginShow" class="button primary">Wyloguj</a>
 						</div>
 					</section>
 					
+					<div class="bottom-margin">
+					<form class="" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+animalList">
+					<legend style="margin-left: 260px; line-height: 3;">wyszukiwarka zwierzątek:</legend>
+					<fieldset>
+					<input type="text" placeholder="podaj imie" name="sf_animal_name" style="max-width: 300px;margin-left:260px;" value="<?php echo $_smarty_tpl->tpl_vars['searchForm']->value->animal_name;?>
+" /><br />
+					<button type="submit" class="button primary small" style="margin-left:260px;">Filtruj</button>
+					</fieldset>
+					
+					<div class="bottom-margin" style="margin-top: 20px;">
+					<button type="submit" class="button small" style="margin-left:260px;" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+animalNew">+ dodaj zwierzątko</button>
+					</div>
+					</form>
+					</div>
 
-					<h4>Alternate</h4>
+
+
+
+					<div style="text-align: center;">
+					<h2>Lista zwierzątek</h2>
 					<div class="table-wrapper">
-					<table id="tab_animal" class="pure-table pure-table-bordered">
-					<thead>
-						<tr>
-							<th>animal id</th>
-							<th>name</th>
-							<th>join date</th>
-							<th>options</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php
+						<table id="tab_animal" class="alt" style="max-width: 500px; margin: auto;">
+							<thead>
+								<tr>
+									<th style="text-align: center;">numer</th>
+									<th style="text-align: center;">imie</th>
+									<th style="text-align: center;">data dołączenia</th>
+									<th style="text-align: center;">opcje</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['animal']->value, 'a');
 $_smarty_tpl->tpl_vars['a']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['a']->value) {
 $_smarty_tpl->tpl_vars['a']->do_else = false;
 ?>
-					<tr><td><?php echo $_smarty_tpl->tpl_vars['a']->value["animal_id"];?>
+								<tr><td><?php echo $_smarty_tpl->tpl_vars['a']->value["animal_id"];?>
 </td><td><?php echo $_smarty_tpl->tpl_vars['a']->value["animal_name"];?>
 </td><td><?php echo $_smarty_tpl->tpl_vars['a']->value["join_date"];?>
-</td><td><a class="button-small pure-button button-secondary" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+</td><td><div style="display: flex; justify-content: center;"><a class="button primary small" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 animalEdit/<?php echo $_smarty_tpl->tpl_vars['a']->value['animal_id'];?>
-">edit</a>&nbsp;<a class="button-small pure-button button-warning" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+">edytuj</a>&nbsp;<a class="button small" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 animalDelete/<?php echo $_smarty_tpl->tpl_vars['a']->value['animal_id'];?>
-">delete</a></td></tr>
-					<?php
+">usuń</a></div></td></tr>
+								<?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-					</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+
+
+
+
+
+					</div>
 					</div>
 					
 
