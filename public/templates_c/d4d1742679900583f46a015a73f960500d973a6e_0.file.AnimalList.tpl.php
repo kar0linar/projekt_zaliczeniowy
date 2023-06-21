@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-15 21:51:30
+/* Smarty version 4.3.0, created on 2023-06-21 17:36:00
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_648b6bc2845274_42709874',
+  'unifunc' => 'content_649318e08b2ce2_11861044',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd4d1742679900583f46a015a73f960500d973a6e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalList.tpl',
-      1 => 1686858425,
+      1 => 1687361726,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_648b6bc2845274_42709874 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649318e08b2ce2_11861044 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
@@ -46,6 +46,12 @@ function content_648b6bc2845274_42709874 (Smarty_Internal_Template $_smarty_tpl)
 					<header id="header" class="alt">
 						<h1><a href="index.html">super zoo</a></h1>
 						<nav>
+						<?php if (\core\RoleUtils::inRole('admin')) {?>
+
+							<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+caretakerList" class="button primary">Lista opiekunów</a>
+						  
+						  <?php }?>
 						<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 loginShow" class="button primary">Wyloguj</a>
 						</nav>

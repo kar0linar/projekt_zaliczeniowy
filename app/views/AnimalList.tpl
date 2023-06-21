@@ -75,6 +75,11 @@
 					<header id="header" class="alt">
 						<h1><a href="index.html">super zoo</a></h1>
 						<nav>
+						{if \core\RoleUtils::inRole('admin')}
+
+							<a href="{$conf->action_root}caretakerList" class="button primary">Lista opiekunów</a>
+						  
+						  {/if}
 						<a href="{$conf->action_root}loginShow" class="button primary">Wyloguj</a>
 						</nav>
 					</header>
