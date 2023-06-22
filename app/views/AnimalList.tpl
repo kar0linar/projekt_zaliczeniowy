@@ -73,11 +73,11 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="index.html">super zoo</a></h1>
+						<h1><a href="index.html">niesamowite zoo</a></h1>
 						<nav>
 						{if \core\RoleUtils::inRole('admin')}
-
-							<a href="{$conf->action_root}caretakerList" class="button primary">Lista opiekunów</a>
+							<a href="{$conf->action_root}animalTab" class="button">Lista zwierzątek</a>
+							<a href="{$conf->action_root}caretakerList" class="button">Lista opiekunów</a>
 						  
 						  {/if}
 						<a href="{$conf->action_root}loginShow" class="button primary">Wyloguj</a>
@@ -89,105 +89,39 @@
 				<!-- Banner -->
 					<section id="banner">
 						<div class="inner">
-							<h2>siema </h2>
-							<p>to jest zoo jbc</p>
+							<h2>niesamowite zoo</h2>
+							<p>Zapraszamy do naszego niesamowitego zoo, gdzie czeka na Ciebie niezapomniane przygody i niezwykłe spotkania z naturą</p>
 						</div>
 					</section>
-					
-					<div class="bottom-margin">
-					<form class="" action="{$conf->action_url}animalList">
-					<legend style="margin-left: 260px; line-height: 3;">wyszukiwarka zwierzątek:</legend>
-					<fieldset>
-					<input type="text" placeholder="podaj imie" name="sf_animal_name" style="max-width: 300px;margin-left:260px;" value="{$searchForm->animal_name}" /><br />
-					<button type="submit" class="button primary small" style="margin-left:260px;">Filtruj</button>
-					</fieldset>
-					
-					<div class="bottom-margin" style="margin-top: 20px;">
-					<button type="submit" class="button small" style="margin-left:260px;" href="{$conf->action_root}animalNew">+ dodaj zwierzątko</button>
-					</div>
-					</form>
-					</div>
-
-
-
-
-					<div style="text-align: center;">
-					<h2>Lista zwierzątek</h2>
-					<div class="table-wrapper">
-						<table id="tab_animal" class="alt" style="max-width: 500px; margin: auto;">
-							<thead>
-								<tr>
-									<th style="text-align: center;">numer</th>
-									<th style="text-align: center;">imie</th>
-									<th style="text-align: center;">data dołączenia</th>
-									<th style="text-align: center;">opcje</th>
-								</tr>
-							</thead>
-							<tbody>
-								{foreach $animal as $a}
-								{strip}
-								<tr>
-									<td>{$a["animal_id"]}</td>
-									<td>{$a["animal_name"]}</td>
-									<td>{$a["join_date"]}</td>
-									<td>
-										<div style="display: flex; justify-content: center;">
-											<a class="button primary small" href="{$conf->action_url}animalEdit/{$a['animal_id']}">edytuj</a>
-											&nbsp;
-											<a class="button small" href="{$conf->action_url}animalDelete/{$a['animal_id']}">usuń</a>
-										</div>
-									</td>
-								</tr>
-								{/strip}
-								{/foreach}
-							</tbody>
-						</table>
-					</div>
-				</div>
 				
-
-
-
-
-
-					</div>
-					</div>
-					
-
-
-
 				<!-- Wrapper -->
 					<section id="wrapper">
 
 						<!-- Four -->
 							<section id="four" class="wrapper alt style1">
 								<div class="inner">
-									<h2 class="major">nasze giga zwierzeta</h2>
-									<p>ponizej jest lista a tu bedzie jakies dluzsze zdanie chyba</p>
+									<h2 class="major">poznaj nasze zwierzątka</h2>
+									{* <p>To niesamowite zoo ma wiele fantastycznych zwierząt, takich jak lwy, słonie, żyrafy, nosorożce i wiele innych!</p> *}
 									<section class="features">
 										<article>
-											<a href="#" class="image"><img src="images/slon.jpg" alt="" /></a>
-											<h3 class="major">Sed feugiat lorem</h3>
+											<a class="image"><img src="images/afryka.png" alt="" /></a>
+											<h3 class="major">strefa afrykańska</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
+											<a class="image"><img src="images/koala.png" alt="" /></a>
+											<h3 class="major">strefa australijska</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-											<h3 class="major">Ante fermentum</h3>
+											<a class="image"><img src="images/kopytne.png" alt="" /></a>
+											<h3 class="major">strefa polarna</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<h3 class="major">Fusce consequat</h3>
+											<a class="image"><img src="images/ptak.png" alt="" /></a>
+											<h3 class="major">Ptaki</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
 										</article>
 									</section>
 								</div>
@@ -196,7 +130,7 @@
 					</section>
 
 							<ul class="copyright">
-								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								&copy; Untitled Inc. All rights reserved.Design: <a href="http://html5up.net">HTML5 UP</a>
 							</ul>
 						</div>
 					</section>

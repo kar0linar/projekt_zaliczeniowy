@@ -4,7 +4,7 @@ use core\App;
 use core\Utils;
 
 App::getRouter()->setDefaultRoute('login'); // akcja/ścieżka domyślna
-App::getRouter()->setLoginRoute('animalList'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
+App::getRouter()->setLoginRoute('animalTab'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
 
 
 Utils::addRoute('animalList',    'AnimalListCtrl');
@@ -12,7 +12,7 @@ Utils::addRoute('loginShow',     'LoginCtrl');
 Utils::addRoute('login',         'LoginCtrl');
 Utils::addRoute('logout',        'LoginCtrl');
 Utils::addRoute('caretakerList', 'CaretakerListCtrl');
-
+Utils::addRoute('animalTab',     'AnimalTabCtrl',	['admin']);
 // Utils::addRoute('animalNew',     'AnimalEditCtrl',	['user','admin']);
 // Utils::addRoute('animalEdit',    'AnimalEditCtrl',	['user','admin']);
 // Utils::addRoute('animalSave',    'AnimalEditCtrl',	['user','admin']);

@@ -11,30 +11,25 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+	<!-- Header -->
+<header id="header" class="alt">
+<h1><a href="index.html">niesamowite zoo</a></h1>
+<nav>
+	<a href="{$conf->action_root}animalList" class="button primary">Powrót</a>
+</nav>
+</header>
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<nav>
-						<a href="{$conf->action_root}animalList" class="button primary">Powrót</a>
-						</nav>
-					</header>
+<div class="bottom-margin">
+<form class="" action="{$conf->action_url}caretakerList" style="margin-left: 100px; margin-top: 20px;">
+	<legend style="line-height: 3;">wyszukiwarka opiekunów:</legend>
+	<fieldset>
+		<input type="text" placeholder="podaj imie" name="sf_caretaker_name" style="max-width: 300px;" value="{$searchForm->caretaker_name}" /><br />
+		<button type="submit" class="button primary small" style="margin-top: 10px;">Filtruj</button>
+		<a class="button small" href="{$conf->action_root}caretakerNew">+ dodaj opiekuna</a>
+	</fieldset>
+</form>
+</div>
 
-					
-					<div class="bottom-margin">
-					<form class="" action="{$conf->action_url}caretakerView">
-					<legend style="margin-left: 260px; line-height: 3;">wyszukiwarka opiekunów:</legend>
-					<fieldset>
-					<input type="text" placeholder="podaj imie" name="sf_caretaker_name" style="max-width: 300px;margin-left:260px;" value="{$searchForm->caretaker_name}" /><br />
-					<button type="submit" class="button primary small" style="margin-left:260px;">Filtruj</button>
-					</fieldset>
-					
-					<div class="bottom-margin" style="margin-top: 20px;">
-					<button type="submit" class="button small" style="margin-left:260px;" href="{$conf->action_root}caretakerNew">+ dodaj opiekuna</button>
-					</div>
-					</form>
-					</div>
 
 
 

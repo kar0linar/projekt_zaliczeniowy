@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-21 18:14:35
+/* Smarty version 4.3.0, created on 2023-06-22 22:59:34
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\CaretakerView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649321ebe4efe5_07769683',
+  'unifunc' => 'content_6494b6363b1597_27579567',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc902bf44492999ea93ff9dbae3af1c13ca2ec11' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\CaretakerView.tpl',
-      1 => 1687364072,
+      1 => 1687467572,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649321ebe4efe5_07769683 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6494b6363b1597_27579567 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 
@@ -34,34 +34,29 @@ function content_649321ebe4efe5_07769683 (Smarty_Internal_Template $_smarty_tpl)
 	</head>
 	<body class="is-preload">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
-
-				<!-- Header -->
-					<header id="header" class="alt">
-						<nav>
-						<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+	<!-- Header -->
+<header id="header" class="alt">
+<h1><a href="index.html">niesamowite zoo</a></h1>
+<nav>
+	<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 animalList" class="button primary">Powrót</a>
-						</nav>
-					</header>
+</nav>
+</header>
 
-					
-					<div class="bottom-margin">
-					<form class="" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-caretakerView">
-					<legend style="margin-left: 260px; line-height: 3;">wyszukiwarka opiekunów:</legend>
-					<fieldset>
-					<input type="text" placeholder="podaj imie" name="sf_caretaker_name" style="max-width: 300px;margin-left:260px;" value="<?php echo $_smarty_tpl->tpl_vars['searchForm']->value->caretaker_name;?>
+<div class="bottom-margin">
+<form class="" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+caretakerList" style="margin-left: 100px; margin-top: 20px;">
+	<legend style="line-height: 3;">wyszukiwarka opiekunów:</legend>
+	<fieldset>
+		<input type="text" placeholder="podaj imie" name="sf_caretaker_name" style="max-width: 300px;" value="<?php echo $_smarty_tpl->tpl_vars['searchForm']->value->caretaker_name;?>
 " /><br />
-					<button type="submit" class="button primary small" style="margin-left:260px;">Filtruj</button>
-					</fieldset>
-					
-					<div class="bottom-margin" style="margin-top: 20px;">
-					<button type="submit" class="button small" style="margin-left:260px;" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-caretakerNew">+ dodaj opiekuna</button>
-					</div>
-					</form>
-					</div>
+		<button type="submit" class="button primary small" style="margin-top: 10px;">Filtruj</button>
+		<a class="button small" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+caretakerNew">+ dodaj opiekuna</a>
+	</fieldset>
+</form>
+</div>
+
 
 
 
