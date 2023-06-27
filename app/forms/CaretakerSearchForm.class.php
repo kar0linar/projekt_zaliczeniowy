@@ -3,5 +3,5 @@
 namespace app\forms;
 
 class CaretakerSearchForm {
-	public $caretaker_name;
+	public $caretaker_surname;
 } 

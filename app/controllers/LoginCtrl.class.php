@@ -11,6 +11,7 @@ use app\forms\LoginForm;
 class LoginCtrl {
 
     private $form;
+    private $record; //rekordy pobrane z bazy danych
 
     public function __construct() {
         //stworzenie potrzebnych obiektów
@@ -20,7 +21,7 @@ class LoginCtrl {
     public function validate() {
         $this->form->login = ParamUtils::getFromRequest('login');
         $this->form->pass = ParamUtils::getFromRequest('pass');
-
+          
         //nie ma sensu walidować dalej, gdy brak parametrów
         if (!isset($this->form->login))
             return false;
@@ -37,13 +38,19 @@ class LoginCtrl {
         if (App::getMessages()->isError())
             return false;
 
+            $this->record = App::getDB()->select("user",["is_admin"],[
+                "AND"=>["login" => $this->form->login,
+                "password" =>$this->form->pass]
+              ])?:3;
+              
         // sprawdzenie, czy dane logowania poprawne
         // (takie informacje najczęściej przechowuje się w bazie danych)
-        if ($this->form->login == "admin" && $this->form->pass == "admin") {
+        if ($this->record[0]==1) {
             RoleUtils::addRole('admin');
-        } else if ($this->form->login == "user" && $this->form->pass == "user") {
+        } else if($this->record[0]== 0){
             RoleUtils::addRole('user');
-        } else {
+        }
+         else {
             Utils::addErrorMessage('Niepoprawny login lub hasło');
         }
 

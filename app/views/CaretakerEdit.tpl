@@ -24,25 +24,34 @@
 			</div>
 		</header>
 		<div class="bottom-margin form-container">
-			<form action="{$conf->action_root}animalSave" method="post" class="pure-form pure-form-aligned">
-				<input type="hidden" name="animal_id" value="{$form->animal_id}">
+			<form action="{$conf->action_root}caretakerSave" method="post" class="pure-form pure-form-aligned">
 				<fieldset>
-					
 					<div class="pure-control-group">
-						<label for="animal_name">imię</label>
-						<input id="animal_name" type="text" placeholder="imie" name="animal_name"
-							value="{$form->animal_name}">
+						<label for="caretaker_id">id</label>
+						<input id="caretaker_id" type="text" placeholder="id" name="caretaker_id"
+							value="{$form->caretaker_id}">
+					</div>
+					<div class="pure-control-group">
+						<label for="caretaker_name">imię</label>
+						<input id="caretaker_name" type="text" placeholder="imie" name="caretaker_name"
+							value="{$form->caretaker_name}">
+					</div>
+					<div class="pure-control-group">
+						<label for="caretaker_surname">nazwisko</label>
+						<input id="caretaker_surname" type="text" placeholder="imie" name="caretaker_surname"
+							value="{$form->caretaker_surname}">
 					</div>
 					<div class="pure-control-group">
 						<label for="join_date">data dołączenia</label>
-						<input id="join_date" type="text" placeholder="data dolaczenia" name="join_date"
+						<input id="join_date" type="text" placeholder="data ur." name="join_date"
 							value="{$form->join_date}">
 					</div>
 					<div class="pure-controls" style="margin-top: 20px;">
 						<input type="submit" class="button primary" value="Zapisz" />
-						<a class="button" href="{$conf->action_root}animalTab">Powrót</a>
+						<a class="button" href="{$conf->action_root}caretakerList">Powrót</a>
 					</div>
 				</fieldset>
+				<input type="hidden" name="id" value="{$form->caretaker_id}">
 			</form>
 		</div>
 

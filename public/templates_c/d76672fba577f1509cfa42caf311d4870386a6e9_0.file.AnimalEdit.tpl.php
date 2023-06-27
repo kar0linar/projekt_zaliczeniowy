@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-21 17:31:08
+/* Smarty version 4.3.0, created on 2023-06-27 08:28:50
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649317bca05d57_51158976',
+  'unifunc' => 'content_649a81a2a0b107_37257707',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd76672fba577f1509cfa42caf311d4870386a6e9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalEdit.tpl',
-      1 => 1686859279,
+      1 => 1687847317,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649317bca05d57_51158976 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649a81a2a0b107_37257707 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE HTML>
 <html>
+
 <head>
 	<title>edycja zwierzaków</title>
 	<meta charset="utf-8" />
@@ -36,65 +37,65 @@ function content_649317bca05d57_51158976 (Smarty_Internal_Template $_smarty_tpl)
 		}
 	</style>
 </head>
-<body>
-<section id="wrapper">
-						<header>
-							<div class="inner">
-								<h2>edycja/dodawanie zwierzątka</h2>
-                                <p>wpisz dane do formularza<p>
-							</div>
-						</header>
-<div class="bottom-margin form-container">
-	<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-animalSave" method="post" class="pure-form pure-form-aligned">
-		<fieldset>
-			<div class="pure-control-group">
-				<label for="animal_id">id</label>
-				<input id="animal_id" type="text" placeholder="id" name="animal_id" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->animal_id;?>
-">
-			</div>
-			<div class="pure-control-group">
-				<label for="animal_name">imię</label>
-				<input id="animal_name" type="text" placeholder="imie" name="animal_name" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->animal_name;?>
-">
-			</div>
-			<div class="pure-control-group">
-				<label for="join_date">data dołączenia</label>
-				<input id="join_date" type="text" placeholder="data ur." name="join_date" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->join_date;?>
-">
-			</div>
-			<div class="pure-controls"style="margin-top: 20px;">
-				<input type="submit" class="button primary" value="Zapisz"/>
-				<a class="button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-personList">Powrót</a>
-			</div>
-		</fieldset>
-		<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->id;?>
-">
-	</form>
-</div>
 
-<!-- Scripts -->
-<?php echo '<script'; ?>
+<body>
+	<section id="wrapper">
+		<header>
+			<div class="inner">
+				<h2>edycja/dodawanie zwierzątka</h2>
+				<p>wpisz dane do formularza
+				<p>
+			</div>
+		</header>
+		<div class="bottom-margin form-container">
+			<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+animalSave" method="post" class="pure-form pure-form-aligned">
+				<input type="hidden" name="animal_id" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->animal_id;?>
+">
+				<fieldset>
+					
+					<div class="pure-control-group">
+						<label for="animal_name">imię</label>
+						<input id="animal_name" type="text" placeholder="imie" name="animal_name"
+							value="<?php echo $_smarty_tpl->tpl_vars['form']->value->animal_name;?>
+">
+					</div>
+					<div class="pure-control-group">
+						<label for="join_date">data dołączenia</label>
+						<input id="join_date" type="text" placeholder="data dolaczenia" name="join_date"
+							value="<?php echo $_smarty_tpl->tpl_vars['form']->value->join_date;?>
+">
+					</div>
+					<div class="pure-controls" style="margin-top: 20px;">
+						<input type="submit" class="button primary" value="Zapisz" />
+						<a class="button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+animalTab">Powrót</a>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<!-- Scripts -->
+		<?php echo '<script'; ?>
  src="assets/js/jquery.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+		<?php echo '<script'; ?>
  src="assets/js/jquery.scrollex.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+		<?php echo '<script'; ?>
  src="assets/js/browser.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+		<?php echo '<script'; ?>
  src="assets/js/breakpoints.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+		<?php echo '<script'; ?>
  src="assets/js/util.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+		<?php echo '<script'; ?>
  src="assets/js/main.js"><?php echo '</script'; ?>
 >
 
 </body>
-</html>
-<?php }
+
+</html><?php }
 }

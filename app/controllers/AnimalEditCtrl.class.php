@@ -5,7 +5,7 @@ namespace app\controllers;
 use core\App;
 use core\Utils;
 use core\ParamUtils;
-use core\Valanimal_idator;
+use core\Validator;
 use app\forms\AnimalEditForm;
 
 class AnimalEditCtrl {
@@ -20,7 +20,16 @@ class AnimalEditCtrl {
     // Walidacja danych przed zapisem (nowe dane lub edycja).
     public function validateSave() {
         //0. Pobranie parametrów z walidacją
-        $this->form->animal_id = ParamUtils::getFromRequest('animal_id', true, 'Błędne wywołanie aplikacji');
+
+
+        $v = new Validator();
+        $this->form->animal_id = $v->validateFromRequest("animal_id", [
+        
+          'required' => true,
+          'required_message' => 'Imię jest wymagane',
+          'int' => true,
+           'validator_message' => 'Błędne wywołanie aplikacji'
+        ]);
         $this->form->animal_name = ParamUtils::getFromRequest('animal_name', true, 'Błędne wywołanie aplikacji');
         // $this->form->surname = ParamUtils::getFromRequest('surname', true, 'Błędne wywołanie aplikacji');
         $this->form->join_date = ParamUtils::getFromRequest('join_date', true, 'Błędne wywołanie aplikacji');
@@ -29,9 +38,9 @@ class AnimalEditCtrl {
             return false;
 
         // 1. sprawdzenie czy wartości wymagane nie są puste
-        if (empty(trim($this->form->animal_id))) {
-            Utils::addErrorMessage('insert id');
-        }
+        // if (empty(trim($this->form->animal_id))) {
+        //     Utils::addErrorMessage('insert id');
+        // }
         if (empty(trim($this->form->animal_name))) {
             Utils::addErrorMessage('insert name');
         }
@@ -107,7 +116,7 @@ class AnimalEditCtrl {
         }
 
         // 3. Przekierowanie na stronę listy osób
-        App::getRouter()->forwardTo('AnimalList');
+        App::getRouter()->redirectTo('animalTab');
     }
 
     public function action_animalSave() {
@@ -121,18 +130,13 @@ class AnimalEditCtrl {
                 if ($this->form->animal_id == '') {
                     //sprawdź liczebność rekordów - nie pozwalaj przekroczyć 20
                     $count = App::getDB()->count("animal");
-                    if ($count <= 100) {
+                   
                         App::getDB()->insert("animal", [
-                            "animal_id" => $this->form->name,
+                            "animal_id" => $this->form->animal_id,
                             "animal_name" => $this->form->animal_name,
                             "join_date" => $this->form->join_date,
                         ]);
-                    } else { //za dużo rekordów
-                        // Gdy za dużo rekordów to pozostań na stronie
-                        Utils::addInfoMessage('limit: too much records(>100) to add new record you have to delete another');
-                        $this->generateView(); //pozostań na stronie edycji
-                        exit(); //zakończ przetwarzanie, aby nie dodać wiadomości o pomyślnym zapisie danych
-                    }
+                    
                 } else {
                     //2.2 Edycja rekordu o danym ID
                     App::getDB()->update("animal", [
@@ -151,7 +155,7 @@ class AnimalEditCtrl {
             }
 
             // 3b. Po zapisie przejdź na stronę listy osób (w ramach tego samego żądania http)
-            App::getRouter()->forwardTo('AnimalList');
+            App::getRouter()->forwardTo('animalTab');
         } else {
             // 3c. Gdy błąd walidacji to pozostań na stronie
             $this->generateView();
