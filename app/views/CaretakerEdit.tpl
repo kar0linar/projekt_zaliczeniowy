@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>edycja zwierzaków</title>
+	<title>edycja opiekunów</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
@@ -18,19 +18,15 @@
 	<section id="wrapper">
 		<header>
 			<div class="inner">
-				<h2>edycja/dodawanie zwierzątka</h2>
+				<h2>edycja/dodawanie opiekunów</h2>
 				<p>wpisz dane do formularza
 				<p>
 			</div>
 		</header>
 		<div class="bottom-margin form-container">
 			<form action="{$conf->action_root}caretakerSave" method="post" class="pure-form pure-form-aligned">
+			<input type="hidden" name="caretaker_id" value="{$form->caretaker_id}">
 				<fieldset>
-					<div class="pure-control-group">
-						<label for="caretaker_id">id</label>
-						<input id="caretaker_id" type="text" placeholder="id" name="caretaker_id"
-							value="{$form->caretaker_id}">
-					</div>
 					<div class="pure-control-group">
 						<label for="caretaker_name">imię</label>
 						<input id="caretaker_name" type="text" placeholder="imie" name="caretaker_name"
@@ -51,7 +47,7 @@
 						<a class="button" href="{$conf->action_root}caretakerList">Powrót</a>
 					</div>
 				</fieldset>
-				<input type="hidden" name="id" value="{$form->caretaker_id}">
+
 			</form>
 		</div>
 

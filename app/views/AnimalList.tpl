@@ -26,7 +26,7 @@
 					<a href="{$conf->action_root}caretakerList" class="button">Lista opiekunów</a>
 
 				{/if}
-				<a href="{$conf->action_root}loginShow" class="button primary">Wyloguj</a>
+				<a href="{$conf->action_root}loginShow" class="button primary">Zaloguj</a>
 			</nav>
 		</header>
 
@@ -66,6 +66,22 @@
 	</section>
 
 	</div>
+	{block name=messages}
+
+		{if $msgs->isMessage()}
+			<div class="messages bottom-margin">
+				<ul>
+					{foreach $msgs->getMessages() as $msg}
+						{strip}
+							<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if}
+								{if $msg->isInfo()}info{/if}"><li>{$msg->text}</li></span>
+						{/strip}
+					{/foreach}
+				</ul>
+			</div>
+		{/if}
+
+	{/block}
 
 	<!-- Footer -->
 	<section id="footer">
@@ -78,6 +94,7 @@
 	</section>
 
 	</div>
+	
 
 
 	<!-- Scripts -->

@@ -20,47 +20,28 @@ class AnimalEditCtrl {
     // Walidacja danych przed zapisem (nowe dane lub edycja).
     public function validateSave() {
         //0. Pobranie parametrów z walidacją
-
+        $this->form->animal_id = ParamUtils::getFromPost('animal_id', true, 'Błędne wywołanie aplikacji');
 
         $v = new Validator();
-        $this->form->animal_id = $v->validateFromRequest("animal_id", [
-        
+        $this->form->animal_name= $v->validateFromPost("animal_name", [
+          'trim' => true,
           'required' => true,
           'required_message' => 'Imię jest wymagane',
-          'int' => true,
-           'validator_message' => 'Błędne wywołanie aplikacji'
+           'validator_message' => 'Błędne wywołanie aplikacji2'
         ]);
-        $this->form->animal_name = ParamUtils::getFromRequest('animal_name', true, 'Błędne wywołanie aplikacji');
-        // $this->form->surname = ParamUtils::getFromRequest('surname', true, 'Błędne wywołanie aplikacji');
-        $this->form->join_date = ParamUtils::getFromRequest('join_date', true, 'Błędne wywołanie aplikacji');
 
-        if (App::getMessages()->isError())
-            return false;
-
-        // 1. sprawdzenie czy wartości wymagane nie są puste
-        // if (empty(trim($this->form->animal_id))) {
-        //     Utils::addErrorMessage('insert id');
-        // }
-        if (empty(trim($this->form->animal_name))) {
-            Utils::addErrorMessage('insert name');
+        $date = $v->validateFromPost('join_date', [
+            'trim' => true,
+            'required' => true,
+            'required_message' => "Wprowadź datę",
+            'date_format' => 'Y-m-d',
+            'validator_message' => "Niepoprawny format daty. Przykład: 2137-69-69"
+        ]);
+        if ($v->isLastOK()) {
+            $this->form->join_date = $date->format('Y-m-d');
         }
-        if (empty(trim($this->form->join_date))) {
-            Utils::addErrorMessage('insert join date');
-        }
-
-        if (App::getMessages()->isError())
-            return false;
-
-        // 2. sprawdzenie poprawności przekazanych parametrów
-
-        $d = \DateTime::createFromFormat('Y-m-d', $this->form->join_date);
-        if ($d === false) {
-            Utils::addErrorMessage('wrong data format! example: 2137-69-69');
-        }
-
         return !App::getMessages()->isError();
     }
-
     //validacja danych przed wyswietleniem do edycji
     public function validateEdit() {
         //pobierz parametry na potrzeby wyswietlenia danych do edycji
@@ -127,10 +108,7 @@ class AnimalEditCtrl {
             try {
 
                 //2.1 Nowy rekord
-                if ($this->form->animal_id == '') {
-                    //sprawdź liczebność rekordów - nie pozwalaj przekroczyć 20
-                    $count = App::getDB()->count("animal");
-                   
+                if ($this->form->animal_id == '') {                   
                         App::getDB()->insert("animal", [
                             "animal_id" => $this->form->animal_id,
                             "animal_name" => $this->form->animal_name,

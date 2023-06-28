@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-27 08:52:05
+/* Smarty version 4.3.0, created on 2023-06-28 16:58:56
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalTab.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649a8715ec4322_07063650',
+  'unifunc' => 'content_649c4ab0546518_65668063',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7cce112052517585419689ecafe48a6c0243a24' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalTab.tpl',
-      1 => 1687848720,
+      1 => 1687964318,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649a8715ec4322_07063650 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649c4ab0546518_65668063 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!DOCTYPE HTML>
 
  <html>
@@ -80,7 +80,7 @@ animalNew">+ dodaj zwierzątko</a>
 
  		<div style="text-align: center;">
  			<h2>Lista zwierzątek</h2>
- 			<div class="table-wrapper" style="max-width: 700px; margin: auto;">
+ 			<div class="table-wrapper" style="max-width: 800px; margin: auto;">
  				<table id="tab_animal" class="alt">
  					<thead>
  						<tr>

@@ -51,7 +51,7 @@
 
  		<div style="text-align: center;">
  			<h2>Lista zwierzątek</h2>
- 			<div class="table-wrapper" style="max-width: 700px; margin: auto;">
+ 			<div class="table-wrapper" style="max-width: 800px; margin: auto;">
  				<table id="tab_animal" class="alt">
  					<thead>
  						<tr>

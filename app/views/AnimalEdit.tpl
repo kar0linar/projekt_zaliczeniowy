@@ -46,6 +46,23 @@
 			</form>
 		</div>
 
+		{block name=messages}
+
+			{if $msgs->isMessage()}
+				<div class="messages bottom-margin">
+					<ul>
+						{foreach $msgs->getMessages() as $msg}
+							{strip}
+								<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if}
+									{if $msg->isInfo()}info{/if}">{$msg->text}</span>
+							{/strip}
+						{/foreach}
+					</ul>
+				</div>
+			{/if}
+
+		{/block}
+
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>

@@ -8,67 +8,65 @@ use core\ParamUtils;
 use core\Validator;
 use app\forms\CaretakerEditForm;
 
-class CaretakerEditCtrl {
+class CaretakerEditCtrl
+{
 
     private $form; //dane formularza
 
-    public function __construct() {
+    public function __construct()
+    {
         //stworzenie potrzebnych obiektów
         $this->form = new CaretakerEditForm();
     }
 
     // Walidacja danych przed zapisem (nowe dane lub edycja).
-    public function validateSave() {
+    public function validateSave()
+    {
         //0. Pobranie parametrów z walidacją
-        $this->form->caretaker_id = ParamUtils::getFromRequest('caretaker_id', true, 'Błędne wywołanie aplikacji');
-        $this->form->caretaker_name = ParamUtils::getFromRequest('caretaker_name', true, 'Błędne wywołanie aplikacji');
-        $this->form->caretaker_surname = ParamUtils::getFromRequest('caretaker_surname', true, 'Błędne wywołanie aplikacji');
-        $this->form->join_date = ParamUtils::getFromRequest('join_date', true, 'Błędne wywołanie aplikacji');
+        $this->form->caretaker_id = ParamUtils::getFromPost('caretaker_id', true, 'Błędne wywołanie aplikacji');
 
-        if (App::getMessages()->isError())
-            return false;
+        $v = new Validator();
+        $this->form->caretaker_name = $v->validateFromPost("caretaker_name", [
+            'required' => true,
+            'required_message' => 'Imię jest wymagane',
+            'validator_message' => 'Błędne wywołanie aplikacji'
+        ]);
+        $this->form->caretaker_surname = $v->validateFromPost("caretaker_surname", [
+            'required' => true,
+            'required_message' => 'nazwisko jest wymagane',
+            'validator_message' => 'Błędne wywołanie aplikacji'
+        ]);
 
-        // 1. sprawdzenie czy wartości wymagane nie są puste
-        if (empty(trim($this->form->caretaker_id))) {
-            Utils::addErrorMessage('Wprowadź id');
+        $date = $v->validateFromPost('join_date', [
+            'trim' => true,
+            'required' => true,
+            'required_message' => "Wprowadź datę",
+            'date_format' => 'Y-m-d',
+            'validator_message' => "Niepoprawny format daty. Przykład: 2137-69-69"
+        ]);
+        if ($v->isLastOK()) {
+            $this->form->join_date = $date->format('Y-m-d');
         }
-        if (empty(trim($this->form->caretaker_name))) {
-            Utils::addErrorMessage('Wprowadź imię');
-        }
-        if (empty(trim($this->form->caretaker_surname))) {
-            Utils::addErrorMessage('Wprowadź nazwisko');
-        }
-        if (empty(trim($this->form->join_date))) {
-            Utils::addErrorMessage('Wprowadź datę urodzenia');
-        }
-
-        if (App::getMessages()->isError())
-            return false;
-
-        // 2. sprawdzenie poprawności przekazanych parametrów
-
-        $d = \DateTime::createFromFormat('Y-m-d', $this->form->join_date);
-        if ($d === false) {
-            Utils::addErrorMessage('Zły format daty. Przykład: 2015-12-20');
-        }
-
         return !App::getMessages()->isError();
     }
 
     //validacja danych przed wyswietleniem do edycji
-    public function validateEdit() {
+    public function validateEdit()
+    {
         //pobierz parametry na potrzeby wyswietlenia danych do edycji
         //z widoku listy osób (parametr jest wymagany)
-        $this->form->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
+        $this->form->caretaker_id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
         return !App::getMessages()->isError();
     }
 
-    public function action_caretakerNew() {
+    public function action_caretakerNew()
+    {
         $this->generateView();
     }
 
     //wysiweltenie rekordu do edycji wskazanego parametrem 'id'
-    public function action_caretakerEdit() {
+    public function action_caretakerEdit()
+    {
         // 1. walidacja id osoby do edycji
         if ($this->validateEdit()) {
             try {
@@ -81,6 +79,7 @@ class CaretakerEditCtrl {
                 $this->form->caretaker_name = $record['caretaker_name'];
                 $this->form->caretaker_surname = $record['caretaker_surname'];
                 $this->form->join_date = $record['join_date'];
+                // $this->form->birthdate = $record['birthdate'];
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
                 if (App::getConf()->debug)
@@ -92,7 +91,8 @@ class CaretakerEditCtrl {
         $this->generateView();
     }
 
-    public function action_caretakerDelete() {
+    public function action_caretakerDelete()
+    {
         // 1. walidacja id osoby do usuniecia
         if ($this->validateEdit()) {
 
@@ -101,19 +101,20 @@ class CaretakerEditCtrl {
                 App::getDB()->delete("caretaker", [
                     "caretaker_id" => $this->form->caretaker_id
                 ]);
-                Utils::addInfoMessage('Pomyślnie usunięto rekord');
+                Utils::addInfoMessage('record deleted');
             } catch (\PDOException $e) {
-                Utils::addErrorMessage('Wystąpił błąd podczas usuwania rekordu');
+                Utils::addErrorMessage('unexspected deleting record error');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
         }
 
         // 3. Przekierowanie na stronę listy osób
-        App::getRouter()->forwardTo('caretakerList');
+        App::getRouter()->redirectTo('caretakerList');
     }
 
-    public function action_caretakerSave() {
+    public function action_caretakerSave()
+    {
 
         // 1. Walidacja danych formularza (z pobraniem)
         if ($this->validateSave()) {
@@ -124,31 +125,27 @@ class CaretakerEditCtrl {
                 if ($this->form->caretaker_id == '') {
                     //sprawdź liczebność rekordów - nie pozwalaj przekroczyć 20
                     $count = App::getDB()->count("caretaker");
-                    if ($count <= 100) {
-                        App::getDB()->insert("caretaker", [
-                            "caretaker_name" => $this->form->caretaker_name,
-                            "caretaker_surname" => $this->form->caretaker_surname,
-                            "join_date" => $this->form->join_date
-                        ]);
-                    } else { //za dużo rekordów
-                        // Gdy za dużo rekordów to pozostań na stronie
-                        Utils::addInfoMessage('Ograniczenie: Zbyt dużo rekordów. Aby dodać nowy usuń wybrany wpis.');
-                        $this->generateView(); //pozostań na stronie edycji
-                        exit(); //zakończ przetwarzanie, aby nie dodać wiadomości o pomyślnym zapisie danych
-                    }
+
+                    App::getDB()->insert("caretaker", [
+                        "caretaker_id" => $this->form->caretaker_id,
+                        "caretaker_name" => $this->form->caretaker_name,
+                        "caretaker_surname" => $this->form->caretaker_surname,
+                        "join_date" => $this->form->join_date,
+                    ]);
+
                 } else {
                     //2.2 Edycja rekordu o danym ID
                     App::getDB()->update("caretaker", [
                         "caretaker_name" => $this->form->caretaker_name,
-                            "caretaker_surname" => $this->form->caretaker_surname,
-                            "join_date" => $this->form->join_date
-                            ], [
+                        "caretaker_surname" => $this->form->caretaker_surname,
+                        "join_date" => $this->form->join_date
+                    ], [
                         "caretaker_id" => $this->form->caretaker_id
                     ]);
                 }
-                Utils::addInfoMessage('Pomyślnie zapisano rekord');
+                Utils::addInfoMessage('record saved');
             } catch (\PDOException $e) {
-                Utils::addErrorMessage('Wystąpił nieoczekiwany błąd podczas zapisu rekordu');
+                Utils::addErrorMessage('unexpected saving record error');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
@@ -161,7 +158,8 @@ class CaretakerEditCtrl {
         }
     }
 
-    public function generateView() {
+    public function generateView()
+    {
         App::getSmarty()->assign('form', $this->form); // dane formularza dla widoku
         App::getSmarty()->display('CaretakerEdit.tpl');
     }

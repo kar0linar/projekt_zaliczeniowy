@@ -2,7 +2,7 @@
 
 <head>
 	<form action="{$conf->action_root}login" method="post">
-		<title>login</title>
+		<title>rejstracja</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
@@ -25,24 +25,20 @@
 	<div class="login-wrapper">
 		<div class="container">
 			<header>
-				<h2>Witamy w bazie zwierząt zoo</h2>
-				<p>Zaloguj się do systemu, aby móc skorzystać ze strony</p>
+				<h2>Rejstracja w systemie zoo</h2>
+				<p>Podaj poprawne dane</p>
 			</header>
-			<form action="{$conf->action_url}login" method="post" class="login-form">
+			<form action="{$conf->action_url}register" method="post" class="register-form">
 				<div class="row gtr-uniform gtr-50">
 					<div class="col-12">
-						<input type="text" name="login" id="id_login" placeholder="Login" value="{$form->login}">
+						<input type="text" name="login" id="id_login" placeholder="utwórz login" value="{$form->login}">
 					</div>
 					<div class="col-12">
-						<input type="password" name="pass" id="id_pass" placeholder="Hasło">
+						<input type="password" name="pass" id="id_pass" placeholder="utwórz hasło">
 					</div>
-					<div class="container">
-						<input type="submit" value="Zaloguj" class="button primary">
-						<a class="button" href="{$conf->action_root}animalTab">Powrót</a>
-					</div>
-					<div class="container">
-					<p>jeżeli nie posiadasz konta - zarejestruj się</p>
-					<a class="button primary fit" style="margin-top: 1px;" href="{$conf->action_root}registerShow">Zarejestruj</a>
+					<div class="col-12">
+						<input type="submit" value="Zarejestruj" class="button primary">
+                        <a class="button" href="{$conf->action_root}loginShow">powrót</a>
 					</div>
 					{block name=messages}
 
@@ -52,7 +48,7 @@
 									{foreach $msgs->getMessages() as $msg}
 										{strip}
 											<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if}
-												{if $msg->isInfo()}info{/if}"><li>{$msg->text}</li></span>
+												{if $msg->isInfo()}info{/if}">{$msg->text}</span>
 										{/strip}
 									{/foreach}
 								</ul>

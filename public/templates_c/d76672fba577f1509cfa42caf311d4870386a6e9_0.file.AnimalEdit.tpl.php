@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-27 08:28:50
+/* Smarty version 4.3.0, created on 2023-06-28 14:17:12
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649a81a2a0b107_37257707',
+  'unifunc' => 'content_649c24c87c3303_71861482',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd76672fba577f1509cfa42caf311d4870386a6e9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalEdit.tpl',
-      1 => 1687847317,
+      1 => 1687954629,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649a81a2a0b107_37257707 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE HTML>
+function content_649c24c87c3303_71861482 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, false);
+?>
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -75,6 +78,11 @@ animalTab">Powrót</a>
 			</form>
 		</div>
 
+		<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1023541597649c24c8795839_61845383', 'messages');
+?>
+
+
 		<!-- Scripts -->
 		<?php echo '<script'; ?>
  src="assets/js/jquery.min.js"><?php echo '</script'; ?>
@@ -98,4 +106,40 @@ animalTab">Powrót</a>
 </body>
 
 </html><?php }
+/* {block 'messages'} */
+class Block_1023541597649c24c8795839_61845383 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'messages' => 
+  array (
+    0 => 'Block_1023541597649c24c8795839_61845383',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+
+			<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isMessage()) {?>
+				<div class="messages bottom-margin">
+					<ul>
+						<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');
+$_smarty_tpl->tpl_vars['msg']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
+$_smarty_tpl->tpl_vars['msg']->do_else = false;
+?>
+							<span msg <?php if ($_smarty_tpl->tpl_vars['msg']->value->isError()) {?>error<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isWarning()) {?>warning<?php }
+if ($_smarty_tpl->tpl_vars['msg']->value->isInfo()) {?>info<?php }?>"><?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+</span>
+						<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+					</ul>
+				</div>
+			<?php }?>
+
+		<?php
+}
+}
+/* {/block 'messages'} */
 }
