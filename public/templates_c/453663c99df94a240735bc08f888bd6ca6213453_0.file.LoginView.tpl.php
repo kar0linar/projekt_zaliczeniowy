@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-28 15:29:20
+/* Smarty version 4.3.0, created on 2023-06-30 18:43:35
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\LoginView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649c35b0a25a58_43108537',
+  'unifunc' => 'content_649f0637927908_24433239',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '453663c99df94a240735bc08f888bd6ca6213453' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\LoginView.tpl',
-      1 => 1687958958,
+      1 => 1688143303,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649c35b0a25a58_43108537 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649f0637927908_24433239 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -69,7 +69,7 @@ login" method="post" class="login-form">
 					<div class="container">
 						<input type="submit" value="Zaloguj" class="button primary">
 						<a class="button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-animalTab">Powrót</a>
+animalList">Powrót</a>
 					</div>
 					<div class="container">
 					<p>jeżeli nie posiadasz konta - zarejestruj się</p>
@@ -77,7 +77,7 @@ animalTab">Powrót</a>
 registerShow">Zarejestruj</a>
 					</div>
 					<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1436837731649c35b0a0d6c2_44808215', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1839688469649f0637907cf6_91061571', 'messages');
 ?>
 
 				</div>
@@ -85,12 +85,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1436837731649c35b0
 		</div>
 </div><?php }
 /* {block 'messages'} */
-class Block_1436837731649c35b0a0d6c2_44808215 extends Smarty_Internal_Block
+class Block_1839688469649f0637907cf6_91061571 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_1436837731649c35b0a0d6c2_44808215',
+    0 => 'Block_1839688469649f0637907cf6_91061571',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

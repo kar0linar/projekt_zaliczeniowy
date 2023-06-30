@@ -21,14 +21,20 @@
 		<header id="header" class="alt" style="background-color: #2e3141;">
 			<h1><a href="index.html">niesamowite zoo</a></h1>
 			<nav>
-				{if \core\RoleUtils::inRole('admin')}
+				{if Core\RoleUtils::inRole("1")}
+					<a>Zalogowano jako <span style="color: #737da9;">admin</span></a>
 					<a href="{$conf->action_root}animalTab" class="button">Lista zwierzątek</a>
 					<a href="{$conf->action_root}caretakerList" class="button">Lista opiekunów</a>
-
 				{/if}
-				<a href="{$conf->action_root}loginShow" class="button primary">Zaloguj</a>
+
+				{if count($conf->roles)>0}
+					<a href="{$conf->action_root}logout" class="button primary">Wyloguj</a>
+				{else}
+					<a href="{$conf->action_root}loginShow" class="button primary">Zaloguj</a>
+				{/if}
 			</nav>
 		</header>
+
 
 
 
@@ -73,13 +79,14 @@
 				<ul>
 					{foreach $msgs->getMessages() as $msg}
 						{strip}
-							<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if}
-								{if $msg->isInfo()}info{/if}"><li>{$msg->text}</li></span>
-						{/strip}
-					{/foreach}
-				</ul>
-			</div>
-		{/if}
+							<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">
+				<li>{$msg->text}</li>
+			</span>
+			{/strip}
+			{/foreach}
+		</ul>
+	</div>
+	{/if}
 
 	{/block}
 
@@ -94,7 +101,7 @@
 	</section>
 
 	</div>
-	
+
 
 
 	<!-- Scripts -->
@@ -105,6 +112,6 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-</body>
+				</body>
 
-</html>
+				</html>

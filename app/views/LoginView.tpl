@@ -38,7 +38,7 @@
 					</div>
 					<div class="container">
 						<input type="submit" value="Zaloguj" class="button primary">
-						<a class="button" href="{$conf->action_root}animalTab">Powrót</a>
+						<a class="button" href="{$conf->action_root}animalList">Powrót</a>
 					</div>
 					<div class="container">
 					<p>jeżeli nie posiadasz konta - zarejestruj się</p>

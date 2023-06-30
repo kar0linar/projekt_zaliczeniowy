@@ -34,26 +34,37 @@ class LoginCtrl {
             Utils::addErrorMessage('Nie podano hasła');
         }
 
+        $login = $this->form->login;
+        $pass = $this->form->pass;
         //nie ma sensu walidować dalej, gdy brak wartości
-        if (App::getMessages()->isError())
+        if (App::getMessages()->isError()){
             return false;
-
-            $this->record = App::getDB()->select("user",["is_admin"],[
-                "AND"=>["login" => $this->form->login,
-                "password" =>$this->form->pass]
-              ])?:3;
-              
-        // sprawdzenie, czy dane logowania poprawne
-        // (takie informacje najczęściej przechowuje się w bazie danych)
-        if ($this->record[1]==1) {
-            RoleUtils::addRole('admin');
-        } else if($this->record[1]== 0){
-            RoleUtils::addRole('user');
         }
-         else {
-            Utils::addErrorMessage('Niepoprawny login lub hasło');
-        }
-
+            try {
+                $this->record = App::getDB()->select("user", [
+                    "login",
+                    "password",
+                    "is_admin"
+                ], [
+                    "AND" => [
+                        "login" => $login,
+                        "password" => $pass
+                    ]
+                ]);
+            } catch (PDOException $e){
+                Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+                    
+            }    
+            if (empty($this->record)){
+                Utils::addErrorMessage('Niepoprawny login lub hasło');
+            }else{
+               
+                RoleUtils::addRole($this->record[0]["is_admin"]);
+                Utils::addInfoMessage($this->record[0]["is_admin"]);
+            }
+            
         return !App::getMessages()->isError();
     }
 

@@ -16,7 +16,7 @@ Utils::addRoute('registerShow',  'RegisterCtrl');
 Utils::addRoute('register',      'RegisterCtrl');
 
 Utils::addRoute('animalList',    'AnimalListCtrl');
-Utils::addRoute('animalTab',     'AnimalTabCtrl',	['admin']);
+Utils::addRoute('animalTab',     'AnimalTabCtrl');
 Utils::addRoute('caretakerList', 'CaretakerListCtrl');
 
 Utils::addRoute('animalNew',     'AnimalEditCtrl',	['admin']);
