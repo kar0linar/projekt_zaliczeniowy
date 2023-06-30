@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-28 15:22:10
+/* Smarty version 4.3.0, created on 2023-06-30 21:15:29
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\RegisterView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649c3402e8cbb9_72433988',
+  'unifunc' => 'content_649f29d1d10d20_14141074',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '58b2bd0c3712101588d3b97f2a98463f1534206f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\RegisterView.tpl',
-      1 => 1687958316,
+      1 => 1688152527,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649c3402e8cbb9_72433988 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649f29d1d10d20_14141074 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
 <!DOCTYPE HTML>
 
 <head>
-	<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-login" method="post">
-		<title>rejstracja</title>
+			<title>rejstracja</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -52,27 +50,30 @@ login" method="post">
 <body>
 	<div class="login-wrapper">
 		<div class="container">
-			<header>
-				<h2>Rejstracja w systemie zoo</h2>
-				<p>Podaj poprawne dane</p>
-			</header>
-			<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-register" method="post" class="register-form">
-				<div class="row gtr-uniform gtr-50">
-					<div class="col-12">
-						<input type="text" name="login" id="id_login" placeholder="utwórz login" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->login;?>
-">
-					</div>
-					<div class="col-12">
-						<input type="password" name="pass" id="id_pass" placeholder="utwórz hasło">
-					</div>
-					<div class="col-12">
-						<input type="submit" value="Zarejestruj" class="button primary">
-                        <a class="button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+			
+					<header>
+                <h2>Rejestracja do systemu</h2>
+                <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+register" method="post">
+                <fieldset>    
+                <div class="pure-control-group" style="margin-bottom:20px">
+                    <input id="login" type="text" name="login" placeholder="utwórz nowy login">
+                </div>
+                
+                <div class="pure-control-group">
+                <input id="password" type="password" name="password" placeholder="utwórz nowe hasło"/><br />
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Zarejestruj" class="button primary" />
+                    <a class="button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 loginShow">powrót</a>
 					</div>
+                
+            </fieldset>
+            </form>    
+            </header>
 					<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1131663417649c3402e73844_14335814', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_421211983649f29d1cf5ff1_62467363', 'messages');
 ?>
 
 				</div>
@@ -80,12 +81,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1131663417649c3402
 		</div>
 </div><?php }
 /* {block 'messages'} */
-class Block_1131663417649c3402e73844_14335814 extends Smarty_Internal_Block
+class Block_421211983649f29d1cf5ff1_62467363 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_1131663417649c3402e73844_14335814',
+    0 => 'Block_421211983649f29d1cf5ff1_62467363',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
