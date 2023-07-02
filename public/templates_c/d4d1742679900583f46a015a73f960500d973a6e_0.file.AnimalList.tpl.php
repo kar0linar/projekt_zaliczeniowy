@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-07-01 20:36:01
+/* Smarty version 4.3.0, created on 2023-07-02 20:04:55
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_64a07211b9d905_51702575',
+  'unifunc' => 'content_64a1bc47ec4a21_10614577',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd4d1742679900583f46a015a73f960500d973a6e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalList.tpl',
-      1 => 1688236559,
+      1 => 1688321093,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64a07211b9d905_51702575 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64a1bc47ec4a21_10614577 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -59,10 +59,6 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 animalTab">Lista zwierzaków</a></li>
 								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 caretakerList">Lista opiekunów</a></li>
-								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-login">Zaloguj się</a></li>
-								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-register">Zarejestruj się</a></li>
 							</ul>
 							<a href="#" class="close">Zamknij</a>
 						</div>
@@ -74,10 +70,6 @@ register">Zarejestruj się</a></li>
 							<h2>Menu</h2>
 							<ul class="links">
 								<li><a href="index.html">Strona główna</a></li>
-								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-login">Zaloguj się</a></li>
-								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-register">Zarejestruj się</a></li>
 							</ul>
 							<a href="#" class="close">Zamknij</a>
 						</div>
@@ -142,7 +134,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 	</div>
 	<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_196341930364a07211b90a29_98693663', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_138514649364a1bc47eb19c4_80280320', 'messages');
 ?>
 
 
@@ -186,12 +178,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_196341930364a07211
 
 				</html><?php }
 /* {block 'messages'} */
-class Block_196341930364a07211b90a29_98693663 extends Smarty_Internal_Block
+class Block_138514649364a1bc47eb19c4_80280320 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_196341930364a07211b90a29_98693663',
+    0 => 'Block_138514649364a1bc47eb19c4_80280320',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

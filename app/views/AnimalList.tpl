@@ -31,8 +31,6 @@
 								<li><a href="index.html">Strona główna</a></li>
 								<li><a href="{$conf->action_root}animalTab">Lista zwierzaków</a></li>
 								<li><a href="{$conf->action_root}caretakerList">Lista opiekunów</a></li>
-								<li><a href="{$conf->action_root}login">Zaloguj się</a></li>
-								<li><a href="{$conf->action_root}register">Zarejestruj się</a></li>
 							</ul>
 							<a href="#" class="close">Zamknij</a>
 						</div>
@@ -44,8 +42,6 @@
 							<h2>Menu</h2>
 							<ul class="links">
 								<li><a href="index.html">Strona główna</a></li>
-								<li><a href="{$conf->action_root}login">Zaloguj się</a></li>
-								<li><a href="{$conf->action_root}register">Zarejestruj się</a></li>
 							</ul>
 							<a href="#" class="close">Zamknij</a>
 						</div>

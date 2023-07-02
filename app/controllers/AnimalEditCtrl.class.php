@@ -70,7 +70,7 @@ class AnimalEditCtrl
                 ]);
                 $this->form->animal_id = $record['animal_id'];
                 $this->form->animal_name = $record['animal_name'];
-                $this->form->animal_name = $record['animal_sp'];
+                $this->form->animal_sp = $record['animal_sp'];
                 $this->form->join_date = $record['join_date'];
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
