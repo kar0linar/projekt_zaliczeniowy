@@ -23,8 +23,33 @@
 			<nav>
 				{if Core\RoleUtils::inRole("1")}
 					<a>Zalogowano jako <span style="color: #737da9;">admin</span></a>
-					<a href="{$conf->action_root}animalTab" class="button">Lista zwierzątek</a>
-					<a href="{$conf->action_root}caretakerList" class="button">Lista opiekunów</a>
+					<a href="#menu">Menu</a>
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Strona główna</a></li>
+								<li><a href="{$conf->action_root}animalTab">Lista zwierzaków</a></li>
+								<li><a href="{$conf->action_root}caretakerList">Lista opiekunów</a></li>
+								<li><a href="{$conf->action_root}login">Zaloguj się</a></li>
+								<li><a href="{$conf->action_root}register">Zarejestruj się</a></li>
+							</ul>
+							<a href="#" class="close">Zamknij</a>
+						</div>
+					</nav>
+				{else}
+					<a href="#menu">Menu</a>
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Strona główna</a></li>
+								<li><a href="{$conf->action_root}login">Zaloguj się</a></li>
+								<li><a href="{$conf->action_root}register">Zarejestruj się</a></li>
+							</ul>
+							<a href="#" class="close">Zamknij</a>
+						</div>
+					</nav>
 				{/if}
 
 				{if count($conf->roles)>0}
@@ -93,6 +118,8 @@
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
+		<h2 class="major">Skontaktuj się z nami!</h2>
+			<p>Aby skontaktować się z naszą informacją napisz na niesamowitezoo@gmail.com</p>
 			<ul class="copyright">
 				<li>&copy; Untitled Inc. All rights reserved.</li>
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>

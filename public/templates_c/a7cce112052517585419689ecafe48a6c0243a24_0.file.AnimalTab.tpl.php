@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-28 16:58:56
+/* Smarty version 4.3.0, created on 2023-07-02 18:45:06
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalTab.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649c4ab0546518_65668063',
+  'unifunc' => 'content_64a1a9921bff80_28110924',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7cce112052517585419689ecafe48a6c0243a24' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalTab.tpl',
-      1 => 1687964318,
+      1 => 1688316246,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649c4ab0546518_65668063 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64a1a9921bff80_28110924 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!DOCTYPE HTML>
 
  <html>
@@ -86,6 +86,7 @@ animalNew">+ dodaj zwierzątko</a>
  						<tr>
  							<th style="text-align: center;">numer</th>
  							<th style="text-align: center;">imie</th>
+							 <th style="text-align: center;">gatunek</th>
  							<th style="text-align: center;">data dołączenia</th>
  							<th style="text-align: center;">opcje</th>
  						</tr>
@@ -99,6 +100,7 @@ $_smarty_tpl->tpl_vars['a']->do_else = false;
 ?>
 	 						<tr><td><?php echo $_smarty_tpl->tpl_vars['a']->value["animal_id"];?>
 </td><td><?php echo $_smarty_tpl->tpl_vars['a']->value["animal_name"];?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['a']->value["animal_sp"];?>
 </td><td><?php echo $_smarty_tpl->tpl_vars['a']->value["join_date"];?>
 </td><td><div style="display: flex; justify-content: center;"><a class="button primary small" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 animalEdit/<?php echo $_smarty_tpl->tpl_vars['a']->value['animal_id'];?>

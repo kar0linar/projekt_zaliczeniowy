@@ -10,10 +10,7 @@ use app\forms\AnimalSearchForm;
 class AnimalListCtrl
 {
 
-
-    private $records; //rekordy pobrane z bazy danych
-
-
+    private $records;
     public function action_animalList()
     {
 
@@ -25,9 +22,9 @@ class AnimalListCtrl
             if (App::getConf()->debug)
                 Utils::addErrorMessage($e->getMessage());
         }
-        // 4. wygeneruj widok
 
-        App::getSmarty()->assign('category', $this->records); // lista rekordów z bazy danych
+
+        App::getSmarty()->assign('category', $this->records);
         App::getSmarty()->display('AnimalList.tpl');
     }
 

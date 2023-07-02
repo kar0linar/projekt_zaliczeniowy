@@ -28,7 +28,7 @@
 			style="background-color: #505c94; height: 400px; display: flex; align-items: center; justify-content: center;">
 			<header style="margin-bottom: 20px;">
 				<div class="inner">
-					<h2 style="margin: 0; color: white;">panel kontroli - opiekacze</h2>
+					<h2 style="margin: 0; color: white;">panel kontroli - opiekunowie</h2>
 				</div>
 			</header>
 		</section>

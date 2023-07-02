@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-28 16:58:41
+/* Smarty version 4.3.0, created on 2023-07-02 19:10:36
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\CaretakerView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649c4aa14bf7e1_93597356',
+  'unifunc' => 'content_64a1af8c07fa05_79482619',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc902bf44492999ea93ff9dbae3af1c13ca2ec11' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\CaretakerView.tpl',
-      1 => 1687964318,
+      1 => 1688317251,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649c4aa14bf7e1_93597356 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64a1af8c07fa05_79482619 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE HTML>
 
 <html>
@@ -54,7 +54,7 @@ animalList" class="button">Powrót</a>
 			style="background-color: #505c94; height: 400px; display: flex; align-items: center; justify-content: center;">
 			<header style="margin-bottom: 20px;">
 				<div class="inner">
-					<h2 style="margin: 0; color: white;">panel kontroli - opiekacze</h2>
+					<h2 style="margin: 0; color: white;">panel kontroli - opiekunowie</h2>
 				</div>
 			</header>
 		</section>

@@ -12,6 +12,22 @@
 			margin: 0 auto;
 		}
 	</style>
+	<nav>
+	{block name=messages}
+		{if $msgs->isMessage()}
+		<div class="messages bottom-margin">
+			<ul>
+				{foreach $msgs->getMessages() as $msg}
+				{strip}
+				<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if}
+					{if $msg->isInfo()}info{/if}">{$msg->text}</span>
+				{/strip}
+				{/foreach}
+			</ul>
+		</div>
+		{/if}
+		{/block}
+	</nav>
 </head>
 
 <body>
@@ -19,8 +35,6 @@
 		<header>
 			<div class="inner">
 				<h2>edycja/dodawanie opiekunów</h2>
-				<p>wpisz dane do formularza
-				<p>
 			</div>
 		</header>
 		<div class="bottom-margin form-container">

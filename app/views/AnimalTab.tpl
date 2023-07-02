@@ -57,6 +57,7 @@
  						<tr>
  							<th style="text-align: center;">numer</th>
  							<th style="text-align: center;">imie</th>
+							 <th style="text-align: center;">gatunek</th>
  							<th style="text-align: center;">data dołączenia</th>
  							<th style="text-align: center;">opcje</th>
  						</tr>
@@ -67,6 +68,7 @@
 		 						<tr>
 		 							<td>{$a["animal_id"]}</td>
 		 							<td>{$a["animal_name"]}</td>
+									 <td>{$a["animal_sp"]}</td>
 		 							<td>{$a["join_date"]}</td>
 		 							<td>
 		 								<div style="display: flex; justify-content: center;">

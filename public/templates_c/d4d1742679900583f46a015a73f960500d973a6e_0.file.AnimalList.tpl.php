@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-30 19:24:46
+/* Smarty version 4.3.0, created on 2023-07-01 20:36:01
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_649f0fde500551_35097096',
+  'unifunc' => 'content_64a07211b9d905_51702575',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd4d1742679900583f46a015a73f960500d973a6e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalList.tpl',
-      1 => 1688145882,
+      1 => 1688236559,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649f0fde500551_35097096 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64a07211b9d905_51702575 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -49,10 +49,39 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 			<nav>
 				<?php if (Core\RoleUtils::inRole("1")) {?>
 					<a>Zalogowano jako <span style="color: #737da9;">admin</span></a>
-					<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-animalTab" class="button">Lista zwierzątek</a>
-					<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-caretakerList" class="button">Lista opiekunów</a>
+					<a href="#menu">Menu</a>
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Strona główna</a></li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+animalTab">Lista zwierzaków</a></li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+caretakerList">Lista opiekunów</a></li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+login">Zaloguj się</a></li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+register">Zarejestruj się</a></li>
+							</ul>
+							<a href="#" class="close">Zamknij</a>
+						</div>
+					</nav>
+				<?php } else { ?>
+					<a href="#menu">Menu</a>
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Strona główna</a></li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+login">Zaloguj się</a></li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+register">Zarejestruj się</a></li>
+							</ul>
+							<a href="#" class="close">Zamknij</a>
+						</div>
+					</nav>
 				<?php }?>
 
 				<?php if (count($_smarty_tpl->tpl_vars['conf']->value->roles) > 0) {?>
@@ -113,13 +142,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 	</div>
 	<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12469375649f0fde4eff09_35764610', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_196341930364a07211b90a29_98693663', 'messages');
 ?>
 
 
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
+		<h2 class="major">Skontaktuj się z nami!</h2>
+			<p>Aby skontaktować się z naszą informacją napisz na niesamowitezoo@gmail.com</p>
 			<ul class="copyright">
 				<li>&copy; Untitled Inc. All rights reserved.</li>
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
@@ -155,12 +186,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12469375649f0fde4e
 
 				</html><?php }
 /* {block 'messages'} */
-class Block_12469375649f0fde4eff09_35764610 extends Smarty_Internal_Block
+class Block_196341930364a07211b90a29_98693663 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_12469375649f0fde4eff09_35764610',
+    0 => 'Block_196341930364a07211b90a29_98693663',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

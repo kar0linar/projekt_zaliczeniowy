@@ -43,6 +43,7 @@ class AnimalTabCtrl {
             $this->records = App::getDB()->select("animal", [
                 "animal_id",
                 "animal_name",
+                "animal_sp",
                 "join_date",
                     ], $where);
         } catch (\PDOException $e) {

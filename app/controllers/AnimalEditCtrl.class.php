@@ -8,26 +8,34 @@ use core\ParamUtils;
 use core\Validator;
 use app\forms\AnimalEditForm;
 
-class AnimalEditCtrl {
+class AnimalEditCtrl
+{
 
     private $form; //dane formularza
 
-    public function __construct() {
-        //stworzenie potrzebnych obiektów
+    public function __construct()
+    {
         $this->form = new AnimalEditForm();
     }
 
-    // Walidacja danych przed zapisem (nowe dane lub edycja).
-    public function validateSave() {
-        //0. Pobranie parametrów z walidacją
+    public function validateSave()
+    {
         $this->form->animal_id = ParamUtils::getFromPost('animal_id', true, 'Błędne wywołanie aplikacji');
 
         $v = new Validator();
-        $this->form->animal_name= $v->validateFromPost("animal_name", [
-          'trim' => true,
-          'required' => true,
-          'required_message' => 'Imię jest wymagane',
-           'validator_message' => 'Błędne wywołanie aplikacji2'
+        $this->form->animal_name = $v->validateFromPost("animal_name", [
+            'trim' => true,
+            'required' => true,
+            'required_message' => 'Imię jest wymagane',
+            'validator_message' => 'Imię jest wymagane'
+        ]);
+
+        $v = new Validator();
+        $this->form->animal_sp = $v->validateFromPost("animal_sp", [
+            'trim' => true,
+            'required' => true,
+            'required_message' => 'Gatunek jest wymagany',
+            'validator_message' => 'Gatunek jest wymagany'
         ]);
 
         $date = $v->validateFromPost('join_date', [
@@ -42,32 +50,28 @@ class AnimalEditCtrl {
         }
         return !App::getMessages()->isError();
     }
-    //validacja danych przed wyswietleniem do edycji
-    public function validateEdit() {
-        //pobierz parametry na potrzeby wyswietlenia danych do edycji
-        //z widoku listy osób (parametr jest wymagany)
+    public function validateEdit()
+    {
         $this->form->animal_id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
         return !App::getMessages()->isError();
     }
 
-    public function action_animalNew() {
+    public function action_animalNew()
+    {
         $this->generateView();
     }
 
-    //wysiweltenie rekordu do edycji wskazanego parametrem 'id'
-    public function action_animalEdit() {
-        // 1. walidacja id osoby do edycji
+    public function action_animalEdit()
+    {
         if ($this->validateEdit()) {
             try {
-                // 2. odczyt z bazy danych osoby o podanym ID (tylko jednego rekordu)
                 $record = App::getDB()->get("animal", "*", [
                     "animal_id" => $this->form->animal_id
                 ]);
-                // 2.1 jeśli osoba istnieje to wpisz dane do obiektu formularza
                 $this->form->animal_id = $record['animal_id'];
-                $this->form->animal_name= $record['animal_name'];
+                $this->form->animal_name = $record['animal_name'];
+                $this->form->animal_name = $record['animal_sp'];
                 $this->form->join_date = $record['join_date'];
-                // $this->form->birthdate = $record['birthdate'];
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
                 if (App::getConf()->debug)
@@ -75,12 +79,11 @@ class AnimalEditCtrl {
             }
         }
 
-        // 3. Wygenerowanie widoku
         $this->generateView();
     }
 
-    public function action_animalDelete() {
-        // 1. walidacja id osoby do usuniecia
+    public function action_animalDelete()
+    {
         if ($this->validateEdit()) {
 
             try {
@@ -95,33 +98,29 @@ class AnimalEditCtrl {
                     Utils::addErrorMessage($e->getMessage());
             }
         }
-
-        // 3. Przekierowanie na stronę listy osób
         App::getRouter()->redirectTo('animalTab');
     }
 
-    public function action_animalSave() {
+    public function action_animalSave()
+    {
 
-        // 1. Walidacja danych formularza (z pobraniem)
         if ($this->validateSave()) {
-            // 2. Zapis danych w bazie
             try {
 
-                //2.1 Nowy rekord
-                if ($this->form->animal_id == '') {                   
-                        App::getDB()->insert("animal", [
-                            "animal_id" => $this->form->animal_id,
-                            "animal_name" => $this->form->animal_name,
-                            "join_date" => $this->form->join_date,
-                        ]);
-                    
-                } else {
-                    //2.2 Edycja rekordu o danym ID
-                    App::getDB()->update("animal", [
-                        // "name" => $this->form->name,
+                if ($this->form->animal_id == '') {
+                    App::getDB()->insert("animal", [
+                        "animal_id" => $this->form->animal_id,
                         "animal_name" => $this->form->animal_name,
+                        "animal_sp" => $this->form->animal_sp,
+                        "join_date" => $this->form->join_date,
+                    ]);
+
+                } else {
+                    App::getDB()->update("animal", [
+                        "animal_name" => $this->form->animal_name,
+                        "animal_sp" => $this->form->animal_sp,
                         "join_date" => $this->form->join_date
-                            ], [
+                    ], [
                         "animal_id" => $this->form->animal_id
                     ]);
                 }
@@ -132,16 +131,15 @@ class AnimalEditCtrl {
                     Utils::addErrorMessage($e->getMessage());
             }
 
-            // 3b. Po zapisie przejdź na stronę listy osób (w ramach tego samego żądania http)
             App::getRouter()->forwardTo('animalTab');
         } else {
-            // 3c. Gdy błąd walidacji to pozostań na stronie
             $this->generateView();
         }
     }
 
-    public function generateView() {
-        App::getSmarty()->assign('form', $this->form); // dane formularza dla widoku
+    public function generateView()
+    {
+        App::getSmarty()->assign('form', $this->form);
         App::getSmarty()->display('AnimalEdit.tpl');
     }
 
