@@ -11,11 +11,17 @@ use app\forms\AnimalEditForm;
 class AnimalEditCtrl
 {
 
-    private $form; //dane formularza
-
+    private $form;
+    private $caretaker;
+    private $category;
+    private $species;
     public function __construct()
     {
         $this->form = new AnimalEditForm();
+
+        $this->caretaker=App::getDB()->select("caretaker", "*", ["ORDER" => "caretaker_name"]);
+        $this->category=App::getDB()->select("category", "*", ["ORDER" => "category_name"]);
+        $this->species=App::getDB()->select("species", "*", ["ORDER" => "species_name"]);
     }
 
     public function validateSave()
@@ -31,11 +37,27 @@ class AnimalEditCtrl
         ]);
 
         $v = new Validator();
-        $this->form->animal_sp = $v->validateFromPost("animal_sp", [
+        $this->form->species_id = $v->validateFromPost("species_id", [
             'trim' => true,
             'required' => true,
             'required_message' => 'Gatunek jest wymagany',
             'validator_message' => 'Gatunek jest wymagany'
+        ]);
+
+        $v = new Validator();
+        $this->form->caretaker_id = $v->validateFromPost("caretaker_id", [
+            'trim' => true,
+            'required' => true,
+            'required_message' => 'Opiekun jest wymagany',
+            'validator_message' => 'Opiekun jest wymagany'
+        ]);
+
+        $v = new Validator();
+        $this->form->category_id = $v->validateFromPost("category_id", [
+            'trim' => true,
+            'required' => true,
+            'required_message' => 'Strefa jest wymagana',
+            'validator_message' => 'Strefa jest wymagana'
         ]);
 
         $date = $v->validateFromPost('join_date', [
@@ -45,6 +67,7 @@ class AnimalEditCtrl
             'date_format' => 'Y-m-d',
             'validator_message' => "Niepoprawny format daty. Przykład: 2137-69-69"
         ]);
+
         if ($v->isLastOK()) {
             $this->form->join_date = $date->format('Y-m-d');
         }
@@ -65,13 +88,18 @@ class AnimalEditCtrl
     {
         if ($this->validateEdit()) {
             try {
+
+
                 $record = App::getDB()->get("animal", "*", [
                     "animal_id" => $this->form->animal_id
                 ]);
                 $this->form->animal_id = $record['animal_id'];
                 $this->form->animal_name = $record['animal_name'];
-                $this->form->animal_sp = $record['animal_sp'];
+                $this->form->species_id = $record['species_id'];
                 $this->form->join_date = $record['join_date'];
+                $this->form->caretaker_id= $record['caretaker_id'];
+                $this->form->category_id = $record['category_id'];
+
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
                 if (App::getConf()->debug)
@@ -87,7 +115,6 @@ class AnimalEditCtrl
         if ($this->validateEdit()) {
 
             try {
-                // 2. usunięcie rekordu
                 App::getDB()->delete("animal", [
                     "animal_id" => $this->form->animal_id
                 ]);
@@ -111,15 +138,19 @@ class AnimalEditCtrl
                     App::getDB()->insert("animal", [
                         "animal_id" => $this->form->animal_id,
                         "animal_name" => $this->form->animal_name,
-                        "animal_sp" => $this->form->animal_sp,
+                        "species_id" => $this->form->species_id,
                         "join_date" => $this->form->join_date,
+                        "caretaker_id" => $this->form->caretaker_id,
+                        "category_id" => $this->form->category_id
                     ]);
 
                 } else {
                     App::getDB()->update("animal", [
                         "animal_name" => $this->form->animal_name,
-                        "animal_sp" => $this->form->animal_sp,
-                        "join_date" => $this->form->join_date
+                        "species_id" => $this->form->species_id,
+                        "join_date" => $this->form->join_date,
+                        "caretaker_id" => $this->form->caretaker_id,
+                        "category_id" => $this->form->category_id
                     ], [
                         "animal_id" => $this->form->animal_id
                     ]);
@@ -140,6 +171,9 @@ class AnimalEditCtrl
     public function generateView()
     {
         App::getSmarty()->assign('form', $this->form);
+        App::getSmarty()->assign('caretaker', $this->caretaker);
+        App::getSmarty()->assign('category', $this->category);
+        App::getSmarty()->assign('species', $this->species);
         App::getSmarty()->display('AnimalEdit.tpl');
     }
 

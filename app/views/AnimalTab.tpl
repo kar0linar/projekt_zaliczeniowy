@@ -33,9 +33,6 @@
  			</header>
  		</section>
 
-
-
-
  		<div class="bottom-margin">
  			<form class="" action="{$conf->action_url}animalTab" style="margin-left: 100px; margin-top: 20px;">
  				<legend style="line-height: 3;">wyszukiwarka zwierzątek:</legend>
@@ -51,7 +48,7 @@
 
  		<div style="text-align: center;">
  			<h2>Lista zwierzątek</h2>
- 			<div class="table-wrapper" style="max-width: 800px; margin: auto;">
+ 			<div class="table-wrapper" style="max-width: 1500px; margin: auto;">
  				<table id="tab_animal" class="alt">
  					<thead>
  						<tr>
@@ -59,6 +56,8 @@
  							<th style="text-align: center;">imie</th>
 							 <th style="text-align: center;">gatunek</th>
  							<th style="text-align: center;">data dołączenia</th>
+							 <th style="text-align: center;">opiekun</th>
+							 <th style="text-align: center;">strefa</th>
  							<th style="text-align: center;">opcje</th>
  						</tr>
  					</thead>
@@ -68,8 +67,10 @@
 		 						<tr>
 		 							<td>{$a["animal_id"]}</td>
 		 							<td>{$a["animal_name"]}</td>
-									 <td>{$a["animal_sp"]}</td>
+									 <td title="{$a["species_id"]}">{$a["species_name"]}</td>
 		 							<td>{$a["join_date"]}</td>
+									 <td title="{$a["caretaker_id"]}">{$a["caretaker_name"]}</td>
+									 <td title="{$a["category_id"]}">{$a["category_name"]}</td>
 		 							<td>
 		 								<div style="display: flex; justify-content: center;">
 		 									<a class="button primary small"
@@ -90,6 +91,23 @@
 
  	</div>
  	</section>
+	 {block name=messages}
+
+		{if $msgs->isMessage()}
+			<div class="messages bottom-margin">
+				<ul>
+					{foreach $msgs->getMessages() as $msg}
+						{strip}
+							<span msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">
+				<li>{$msg->text}</li>
+			</span>
+			{/strip}
+			{/foreach}
+		</ul>
+	</div>
+	{/if}
+
+	{/block}
 
  	</div>
  	</div>

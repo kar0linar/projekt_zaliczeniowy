@@ -5,6 +5,8 @@ namespace app\forms;
 class AnimalEditForm {
 	public $animal_id;
 	public $animal_name;
-	public $animal_sp;
+	public $species_id;
 	public $join_date;
+	public $caretaker_id;
+	public $category_id;
 }

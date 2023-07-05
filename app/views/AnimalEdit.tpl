@@ -55,14 +55,12 @@
 					</div>
 
 					<div class="pure-control-group">
-						<label for="animal_sp">gatunek</label>
-						<select id="animal_sp" name="animal_sp">
-							<option value="ssak">ssak</option>
-							<option value="ptak">ptak</option>
-							<option value="płaz">płaz</option>
-							<option value="gad">gad</option>
-							<option value="owad">owad</option>
-							<option value="ryba">ryba</option>
+						<label for="species_id">gatunek</label>
+							<select id="species_id" name="species_id">
+							{foreach $species as $s}
+							<option value="{$s["species_id"]}"{if $s["species_id"]==$form->species_id}selected{{/if}}>{$s["species_name"]}</option>
+							{/foreach}
+
 						</select>
 					</div>
 
@@ -71,6 +69,27 @@
 						<input id="join_date" type="text" placeholder="data dolaczenia" name="join_date"
 							value="{$form->join_date}">
 					</div>
+
+					<div class="pure-control-group">
+						<label for="caretaker_id">opiekun</label>
+							<select id="caretaker_id" name="caretaker_id">
+							{foreach $caretaker as $c}
+							<option value="{$c["caretaker_id"]}"{if $c["caretaker_id"]==$form->caretaker_id}selected{{/if}}>{$c["caretaker_name"]}</option>
+							{/foreach}
+
+						</select>
+					</div>
+
+					<div class="pure-control-group">
+						<label for="category_id">strefa</label>
+							<select id="category_id" name="category_id">
+							{foreach $category as $c}
+							<option value="{$c["category_id"]}"{if $c["category_id"]==$form->category_id}selected{{/if}}>{$c["category_name"]}</option>
+							{/foreach}
+
+						</select>
+					</div>
+					
 					<div class="pure-controls" style="margin-top: 20px;">
 						<input type="submit" class="button primary" value="Zapisz" />
 						<a class="button" href="{$conf->action_root}animalTab">Powrót</a>

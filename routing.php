@@ -3,8 +3,8 @@
 use core\App;
 use core\Utils;
 
-App::getRouter()->setDefaultRoute('animalList'); // akcja/ścieżka domyślna
-App::getRouter()->setLoginRoute('login'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
+App::getRouter()->setDefaultRoute('animalList');
+App::getRouter()->setLoginRoute('login'); 
 
 Utils::addRoute('loginShow',     'LoginCtrl');
 Utils::addRoute('login',         'LoginCtrl');

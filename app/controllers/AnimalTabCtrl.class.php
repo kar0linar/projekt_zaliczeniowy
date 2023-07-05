@@ -40,12 +40,23 @@ class AnimalTabCtrl {
         $where ["ORDER"] = "animal_name";
 
         try {
-            $this->records = App::getDB()->select("animal", [
-                "animal_id",
-                "animal_name",
-                "animal_sp",
-                "join_date",
-                    ], $where);
+            $this->records = App::getDB()->select('animal', [
+                '[><]caretaker' => ['animal.caretaker_id' => 'caretaker_id'],
+                '[><]category' => ['animal.category_id' => 'category_id'],
+                '[><]species' => ['animal.species_id' => 'species_id']
+            ], [
+                "animal.animal_id",
+                "animal.animal_name",
+                "animal.species_id",
+                "animal.join_date",
+                "caretaker.caretaker_name",
+                "caretaker.caretaker_id",
+                "category.category_id",
+                "category.category_name",
+                "species.species_id",
+                "species.species_name"
+            ],$where);
+
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
             if (App::getConf()->debug)

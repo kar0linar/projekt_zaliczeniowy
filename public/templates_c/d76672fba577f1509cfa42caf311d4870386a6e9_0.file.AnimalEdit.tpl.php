@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-07-02 19:09:59
+/* Smarty version 4.3.0, created on 2023-07-05 16:32:36
   from 'C:\xampp\htdocs\projekt_zaliczeniowy\app\views\AnimalEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_64a1af678d1b41_54356207',
+  'unifunc' => 'content_64a57f04362c50_95263425',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd76672fba577f1509cfa42caf311d4870386a6e9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekt_zaliczeniowy\\app\\views\\AnimalEdit.tpl',
-      1 => 1688317798,
+      1 => 1688567514,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64a1af678d1b41_54356207 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64a57f04362c50_95263425 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -47,7 +47,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 	</style>
 	<nav>
 	<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_83717923364a1af678bd1f4_01398071', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6268873564a57f0433b861_83444442', 'messages');
 ?>
 
 	</nav>
@@ -75,14 +75,25 @@ animalSave" method="post" class="pure-form pure-form-aligned">
 					</div>
 
 					<div class="pure-control-group">
-						<label for="animal_sp">gatunek</label>
-						<select id="animal_sp" name="animal_sp">
-							<option value="ssak">ssak</option>
-							<option value="ptak">ptak</option>
-							<option value="płaz">płaz</option>
-							<option value="gad">gad</option>
-							<option value="owad">owad</option>
-							<option value="ryba">ryba</option>
+						<label for="species_id">gatunek</label>
+							<select id="species_id" name="species_id">
+							<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['species']->value, 's');
+$_smarty_tpl->tpl_vars['s']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['s']->value) {
+$_smarty_tpl->tpl_vars['s']->do_else = false;
+?>
+							<option value="<?php echo $_smarty_tpl->tpl_vars['s']->value["species_id"];?>
+"<?php if ($_smarty_tpl->tpl_vars['s']->value["species_id"] == $_smarty_tpl->tpl_vars['form']->value->species_id) {?>selected<?php ob_start();
+}
+$_prefixVariable1 = ob_get_clean();
+echo $_prefixVariable1;?>
+><?php echo $_smarty_tpl->tpl_vars['s']->value["species_name"];?>
+</option>
+							<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
 						</select>
 					</div>
 
@@ -92,6 +103,53 @@ animalSave" method="post" class="pure-form pure-form-aligned">
 							value="<?php echo $_smarty_tpl->tpl_vars['form']->value->join_date;?>
 ">
 					</div>
+
+					<div class="pure-control-group">
+						<label for="caretaker_id">opiekun</label>
+							<select id="caretaker_id" name="caretaker_id">
+							<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['caretaker']->value, 'c');
+$_smarty_tpl->tpl_vars['c']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+$_smarty_tpl->tpl_vars['c']->do_else = false;
+?>
+							<option value="<?php echo $_smarty_tpl->tpl_vars['c']->value["caretaker_id"];?>
+"<?php if ($_smarty_tpl->tpl_vars['c']->value["caretaker_id"] == $_smarty_tpl->tpl_vars['form']->value->caretaker_id) {?>selected<?php ob_start();
+}
+$_prefixVariable2 = ob_get_clean();
+echo $_prefixVariable2;?>
+><?php echo $_smarty_tpl->tpl_vars['c']->value["caretaker_name"];?>
+</option>
+							<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+						</select>
+					</div>
+
+					<div class="pure-control-group">
+						<label for="category_id">strefa</label>
+							<select id="category_id" name="category_id">
+							<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['category']->value, 'c');
+$_smarty_tpl->tpl_vars['c']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+$_smarty_tpl->tpl_vars['c']->do_else = false;
+?>
+							<option value="<?php echo $_smarty_tpl->tpl_vars['c']->value["category_id"];?>
+"<?php if ($_smarty_tpl->tpl_vars['c']->value["category_id"] == $_smarty_tpl->tpl_vars['form']->value->category_id) {?>selected<?php ob_start();
+}
+$_prefixVariable3 = ob_get_clean();
+echo $_prefixVariable3;?>
+><?php echo $_smarty_tpl->tpl_vars['c']->value["category_name"];?>
+</option>
+							<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+						</select>
+					</div>
+					
 					<div class="pure-controls" style="margin-top: 20px;">
 						<input type="submit" class="button primary" value="Zapisz" />
 						<a class="button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
@@ -110,12 +168,12 @@ animalTab">Powrót</a>
 
 <?php }
 /* {block 'messages'} */
-class Block_83717923364a1af678bd1f4_01398071 extends Smarty_Internal_Block
+class Block_6268873564a57f0433b861_83444442 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_83717923364a1af678bd1f4_01398071',
+    0 => 'Block_6268873564a57f0433b861_83444442',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
